@@ -2,701 +2,748 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{$settings->site_name}} | {{$settings->site_title}}</title>
-    <link rel="icon" href="{{ asset('storage/app/public/photos/'.$settings->favicon)}}" type="image/png"/>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Arda - Bitcoin and Cryptocurrency ICO Template</title>
+	<meta name="description" content="Arda is a Bitcoin and Cryptocurrency ICO Template by tempload." />
+	<meta name="keywords" content="bitcoin, ethereum, monero, ico, token, free token, btc, eth" />
+	<meta name="author" content="tempload"/>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS File -->
-    <link href="{{ asset ('temp/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="{{ asset ('temp/assets/images/favicon.png')}}" />
 
-    <!-- Libraries CSS Files -->
-    <link href="{{ asset ('temp/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{ asset ('temp/lib/animate/animate.min.css')}}" rel="stylesheet">
-    <link href="{{ asset ('temp/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
-    <link href="{{ asset ('temp/lib/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-    <link href="{{asset ('temp/lib/icofont/icofont.min.css')}}" rel="stylesheet">
-    <link href="{{asset ('temp/lib/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-    <link href="{{ asset ('temp/lib/jquery/magnific-popup.css')}}" rel="stylesheet">
-    <link href="{{ asset ('temp/lib/aos/aos.css')}}" rel="stylesheet">
-    <link href="{{ asset ('temp/lib/venobox/venobox.css')}}" rel="stylesheet">
-    <link href="{{ asset ('temp/lib/icofont/icofont.min.css')}}" rel="stylesheet">
+	<!-- Bootstrap & Plugins CSS -->
+	<link href="{{ asset ('temp/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{ asset ('temp/assets/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{ asset ('temp/assets/css/owl.carousel.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{ asset ('temp/assets/css/owl.theme.default.min.css')}}" rel="stylesheet" type="text/css">
 
-
-
-
-    <!-- Main Stylesheet File -->
-    <link href="{{asset('temp/css/frontend_style_blue.css')}}" rel="stylesheet">
-
+	<!-- Custom CSS -->
+	<link href="{{ asset ('temp/assets/css/dark.css?v=1.4.0')}}" rel="stylesheet" type="text/css">
 </head>
 <body>
 
-  <!--Start of Tawk.to Script-->
-  <script type="text/javascript">
-  {{!! $settings->tawk_to !!}}
-  </script>
+	<div class="loading-wrapper">
+		<div class="loading">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>	
 
-  <!--==========================
-    Header
-  ============================-->
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top header-transparent">
-    <div class="container-fluid">
+	<!-- ***** Header Area Start ***** -->
+	<header class="header-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 position-relative">
+					<nav class="main-nav">
+						<!-- ***** Logo Start ***** -->
+						<a href="index.html" class="logo">
+							<img src="assets/images/logos/transparent-logo-dark.svg" class="light-logo" alt="Arda ICO"/>
+							<img src="assets/images/logos/white-logo-dark.svg" class="dark-logo" alt="Arda ICO"/>
+						</a>
+						<!-- ***** Logo End ***** -->
 
-      <div class="row justify-content-center">
-        <div class="col-xl-11 d-flex align-items-center">
-            <a href="#intro" class="mr-auto logo"><img src="{{ asset('storage/app/public/photos/'.$settings->logo)}}" alt="{{$settings->site_name}}" title="" class="img-fluid" /></a>
+						<!-- ***** Lang Start ***** -->
+						<div class="lang">
+							<div class="selected">
+								<img src="assets/images/flags/en.png" alt="">
+								<i class="fa fa-angle-down"></i>
+							</div>
+							<ul class="flag-list">
+								<li>
+									<a href="#">
+										<img src="assets/images/flags/en.png" alt=""><span>EN</span>
+									</a>
+								</li>	
+								<li>
+									<a href="#">
+										<img src="assets/images/flags/ru.png" alt=""><span>RU</span>
+									</a>
+								</li>	
+								<li>
+									<a href="#">
+										<img src="assets/images/flags/br.png" alt=""><span>BR</span>
+									</a>
+								</li>	
+							</ul>
+						</div>
+						<!-- ***** Lang End ***** -->
 
-          <nav class="nav-menu d-none d-lg-block">
-            <ul>
-              {{-- <li class="active"><a href="#home">Home</a></li> --}}
-            <li><a href="#about">About</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#pricing">Pricing</a></li>
-              <li><a href="#testimonials">Testimonials</a></li>
-              </li>
-              <li><a href="#contact">Contact us</a></li>
+						<!-- ***** Menu Start ***** -->
+						<ul class="nav">
+							<li><a href="#what-is-ico">WHAT IS ICO</a></li>
+							<li><a href="#token-sale">TOKEN SALE</a></li>
+							<li><a href="#roadmap">ROADMAP</a></li>
+							<li><a href="#apps">APPS</a></li>
+							<li><a href="#team">TEAM</a></li>
+							<li><a href="#faq">FAQ</a></li>
+							<li><a href="#contact">CONTACT</a></li>
+							<li><a href="#" class="btn-nav-box">SIGN UP</a></li>
+						</ul>
+						<a class='menu-trigger'>
+							<span>Menu</span>
+						</a>
+						<!-- ***** Menu End ***** -->						
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- ***** Header Area End ***** -->
+
+	<!-- ***** Wellcome Area Start ***** -->
+	<section class="welcome-area bg-top-right" id="welcome-1">
+		<div class="header-token">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-12 col-sm-12 col-12 align-self-center">
+						<h1>ARDA Decentralized Blockchain Platform</h1>
+						<p>Arda makes it easy creation and deployment of decentralized applications, that can be downloaded by end-users from the application store.</p>
+						<a href="#" class="btn-secondary-box">Download Whitepaper</a>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-12 col-12 align-self-center">
+						<div class="header-image">
+							<img src="assets/images/header.svg" class="img-fluid d-block mx-auto" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="scroll-to">
+			<a href="#what-is-ico">
+				<i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+		</div>		
+	</section>
+	<!-- ***** Wellcome Area End ***** -->
+
+	<!-- ***** What is ICO Start ***** -->
+	<section class="section bg-bottom" id="what-is-ico">
+		<div class="container">
+
     
-              @if($settings->site_preference =="Web dashboard only")
-              @guest
-              <li><a href="login" class="">Sign In</a></li>
-              <li><a href="register" class="btn-log ">Get started</a></li>
-              @else
-              <li class="nav-item dropdown avatar">
-                    <a id="navbarDropdownMenuLink-55" class="nav-link dropdown-toggle" href="#" role="button"         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                      <a href="dashboard" class="dropdown-item text-dark">Dashboard</a><br>
-                        <a href="{{ route('logout') }}" class="dropdown-item text-dark"
-                              onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();">
-                              Logout
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </div>
-              </li>
-              @endguest
-              @else
-    
-              <li><a href="{{$settings->bot_link}}" class="btn-log ">Get started</a></li>
-              @endif
-    
-            </ul>
-          </nav><!-- nav-menu- -->
-        </div>
-      </div>
 
-    </div>
-  </header><!-- End Header -->
-
-
-  <!--==========================
-    Intro Section
-  ============================-->
-  <section id="intro">
-    <div class="intro-container">
-      <div id="introCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-
-        <ol class="carousel-indicators"> </ol>
-
-        <div class="carousel-inner" role="listbox"  >
-          
-          <div class="carousel-item active">
-            <div class="carousel-background"><img src="{{ asset('storage/app/public/photos/'.$content->getImage('57VnOE','img_path'))}}" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>{{$content->getContent('toe3Ew','title')}}</h2>
-                <p>{{$content->getContent('toe3Ew','description')}}</p>
-                <a href="login" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="carousel-background"><img src="{{ asset('storage/app/public/photos/'.$content->getImage('dC6ZaA','img_path'))}}" alt="" ></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>{{$content->getContent('jJwh78','title')}}</h2>
-                <p>{{$content->getContent('jJwh78','description')}}</p>
-                <a href="login" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="carousel-background"><img src="{{ asset('storage/app/public/photos/'.$content->getImage('9kHash','img_path'))}}" alt="">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>{{$content->getContent('SLxaB2','title')}}</h2>
-                <p>{{$content->getContent('SLxaB2','description')}}</p>
-                <a href="login" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
-          </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="carousel-background"><img src="{{ asset('storage/app/public/photos/'.$content->getImage('CcW52g','img_path'))}}" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>{{$content->getContent('BkP8pH','title')}}</h2>
-                <p>{{$content->getContent('BkP8pH','description')}}</p>
-                <a href="login" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="carousel-background"><img src="{{asset('storage/app/public/photos/'.$content->getImage('96i7xH','img_path'))}}" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>{{$content->getContent('W6gTBN','title')}}</h2>
-                <p>{{$content->getContent('W6gTBN','description')}}</p>
-                <a href="login" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-
-      </div>
-    </div>
-  </section><!-- #intro end -->
-
-  <main id="main">
-
-    <!--==========================
-      About Us Section
-    ============================-->
-    <section id="about">
-      <div class="container">
-
-        <header class="section-header">
-          <h3>{{$content->getContent('anvs8c','title')}} {{$settings->site_name}}</h3>
-          <p>{{$content->getContent('anvs8c','description')}}</p>
-        </header>
-
-        <div class="text-center row about-cols">
-
-          <div class="col-lg-3 col-md-4 wow fadeInUp">
-            <div class="about-col">
-              <div class="img">
-                <img src="{{ asset ('temp/img/about/innovate.png')}}" alt="" class="mt-4 w-25">
-                
-              </div>
-              <h2 class="title"><a href="#">{{$content->getContent('epJ4LI','title')}}</a></h2>
-              <p>{{$content->getContent('epJ4LI','description')}}</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="about-col">
-              <div class="img">
-                <img src="{{ asset ('temp/img/about/secure.png')}}" alt="" class="mt-4 w-25">
-                
-              </div>
-              <h2 class="title"><a href="#">{{$content->getContent('5hbB6X','title')}}</a></h2>
-              <p>{{$content->getContent('5hbB6X','description')}}</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 wow fadeInUp" data-wow-delay="0.2s">
-            <div class="about-col">
-              <div class="img">
-                <img src="{{ asset ('temp/img/about/prof.png')}}" alt="" class="mt-4 w-25">
-               
-              </div>
-              <h2 class="title"><a href="#">{{$content->getContent('Zrhm3I','title')}}</a></h2>
-              <p>{{$content->getContent('Zrhm3I','description')}}</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 wow fadeInUp" data-wow-delay="0.2s">
-            <div class="about-col">
-              <div class="img">
-                <img src="{{ asset ('temp/img/about/invest.png')}}" alt="" class="mt-4 w-25">
-               
-              </div>
-              <h2 class="title"><a href="#">{{$content->getContent('yTKhlt','title')}}</a></h2>
-              <p>{{$content->getContent('yTKhlt','description')}}</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- #about -->
-
-    <!--==========================
-      Services Section
-    ============================-->
-    <section id="services">
-      <div class="container">
-
-        <header class="section-header wow fadeInUp">
-          <h3>{{$content->getContent('u0Ervr','title')}}</h3>
-          <p>{{$content->getContent('u0Ervr','description')}}</p>
-        </header>
-
-        <div class="row">
-
-          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
-            <div class="box">
-              <div class="icon" >
-                <svg class="svg">
-                  <use xlink:href="{{ asset ('temp/img/sprite.svg#icon-stable')}}"></use>
-                </svg>
-              </div>
-              <h3 class="title">{{$content->getContent('Dwu6Bv','title')}}</h3>
-              <p class="description">{{$content->getContent('Dwu6Bv','description')}}</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
-            <div class="box">
-              <div class="icon">
-                <svg class="svg">
-                  <use xlink:href="{{ asset ('temp/img/sprite.svg#icon-payment')}}"></use>
-                </svg>
-              </div>
-              <h3 class="title">{{$content->getContent('eMo1d2','title')}}</h3>
-              <p class="description">{{$content->getContent('eMo1d2','description')}}</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-            <div class="box">
-              <div class="icon">
-                <svg class="svg">
-                  <use xlink:href="{{ asset ('temp/img/sprite.svg#icon-referral')}}"></use>
-                </svg>
-              </div>
-              <h3 class="title">{{$content->getContent('kEJPm3','title')}}</h3>
-              <p class="description">{{$content->getContent('kEJPm3','description')}}</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-            <div class="box">
-              <div class="icon">
-                <svg class="svg">
-                  <use xlink:href="{{ asset ('temp/img/sprite.svg#icon-dollar')}}"></use>
-                </svg>
-              </div>
-              <h3 class="title">{{$content->getContent('bBSnFV','title')}}</h3>
-              <p class="description">{{$content->getContent('bBSnFV','description')}}</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
-            <div class="box">
-              <div class="icon">
-                <svg class="svg">
-                  <use xlink:href="{{ asset ('temp/img/sprite.svg#icon-support')}}"></use>
-                </svg>
-              </div>
-              <h3 class="title">{{$content->getContent('DUK9pc','title')}}</h3>
-              <p class="description">{{$content->getContent('DUK9pc','description')}}</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
-            <div class="box">
-              <div class="icon">
-                <svg class="svg">
-                  <use xlink:href="{{ asset ('temp/img/sprite.svg#icon-shield')}}"></use>
-                </svg>
-              </div>
-              <h3 class="title">{{$content->getContent('VaeiMW','title')}}</h3>
-              <p class="description">{{$content->getContent('VaeiMW','description')}}</p>
-            </div>
-          </div>
-
-      </div>
-
-      </div>
-    </section><!-- #services -->
-
-    <!--==========================
-      Pricing Section
-    ============================-->
-    <section id="pricing" class="wow fadeInUp section-bg">
-
-      <div class="container">
-
-        <header class="section-header">
-          <h3>{{$content->getContent('vr6Xw0','title')}}</h3>
-          <p>{{$content->getContent('vr6Xw0','description')}}</p>
-        </header>
-
-        <div class="row flex-items-xs-middle flex-items-xs-center">
-
-          
+    <div class="row">
+				<div class="col-lg-12">
+					<div class="center-heading">
+						<h2 class="section-title">{{$content->getContent('anvs8c','title')}} {{$settings->site_name}}</h2>
+					</div>
+				</div>
+				<div class="offset-lg-3 col-lg-6">
+					<div class="center-text">
+						<p>{{$content->getContent('anvs8c','description')}}</p>
+					</div>					
+				</div>
+			</div>
       
-          @foreach ($plans as $plan)
-              <!-- Basic Plan  -->
-              <div class="col-lg-4 col-md-6">
-                <div class="pricing-box">
-                    <h3>{{$plan->name}}</h3>
-                    <div class="cur">
-                      <span>{{$settings->currency}}</span>
-                      <h2>{{$plan->price}}</h2>
-                      <h6>{{$settings->s_currency}}</h6>
-                     </div>
-                  <div class="price-list">
-                    <ul class="list-unstyled">
-                      <li class="list-item"><i class="bx bx-check"></i>Min. Possible deposit: {{$settings->currency}}{{$plan->min_price}}</li>
-                      <li class="list-item"><i class="bx bx-check"></i>Max. Possible deposit: {{$settings->currency}}{{$plan->max_price}}</li>
-                      <li class="list-item"><i class="bx bx-check"></i>{{$settings->currency}}{{$plan->minr}} Minimum return</li>
-                      <li class="list-item"><i class="bx bx-check"></i>{{$settings->currency}}{{$plan->maxr}} Maximum return</li>
-                      <li class="list-item"><i class="bx bx-check"></i>{{$settings->currency}}{{$plan->gift}} Gift Bonus</li>
-                    </ul>
-                  </div>
-                  <div class="pricing-button">
-                    <a href="" class="btn btn-primary">Buy Now</a>
-                  </div>
-                </div>
-              </div>
-            
-         @endforeach
-        </div>
-      </div>
 
-    </section><!-- #pricing -->
+			<!-- ***** Features Items Start ***** -->
+			<div class="row m-bottom-70">
+				<div class="col-lg-3 col-md-6 col-sm-12 col-12">
+					<div class="features-bordered" data-scroll-reveal="enter bottom move 30px over 0.6s after 0.2s">
+						<div class="icon">
+							<img src="{{ asset ('temp/assets/images/icon/1.svg')}}" alt="">
+						</div>
+						<h5 class="features-title">{{$content->getContent('Zrhm3I','title')}}</h5>
+						<p>{{$content->getContent('Zrhm3I','description')}}.</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12 col-12">
+					<div class="features-bordered" data-scroll-reveal="enter bottom move 30px over 0.6s after 0.4s">
+						<div class="icon">
+							<img src="{{ asset ('temp/assets/images/icon/2.svg')}}" alt="">
+						</div>
+						<h5 class="features-title">{{$content->getContent('epJ4LI','title')}}</h5>
+						<p>{{$content->getContent('epJ4LI','description')}}</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12 col-12"
+					data-scroll-reveal="enter bottom move 30px over 0.6s after 0.6s">
+					<div class="features-bordered">
+						<div class="icon">
+							<img src="{{ asset ('temp/assets/images/icon/3.svg')}}" alt="">
+						</div>
+						<h5 class="features-title">{{$content->getContent('5hbB6X','title')}}</h5>
+						<p>{{$content->getContent('5hbB6X','description')}}</p>
+					</div>
+				</div>
+        <div class="col-lg-3 col-md-6 col-sm-12 col-12"
+					data-scroll-reveal="enter bottom move 30px over 0.6s after 0.6s">
+					<div class="features-bordered">
+						<div class="icon">
+							<img src="{{ asset ('temp/assets/images/icon/4.svg')}}" alt="">
+						</div>
+						<h5 class="features-title">{{$content->getContent('yTKhlt','title')}}</h5>
+						<p>{{$content->getContent('yTKhlt','description')}}</p>
+					</div>
+				</div>
+			</div>
+			<!-- ***** Features Items End ***** -->
+	
+			<!-- ***** About Start ***** -->
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12 align-self-center">
+					<div class="left-heading">
+						<h2 class="section-title">A compelling value proposition.</h2>
+					</div>
+					<div class="left-text">
+						<p class="dark">ARDA (ARD) is an open source, Bitcoin-like digital currency which uses a proof of
+							work script algorithm.</p>
+						<p>The genesis block was mined on March 1st, 2014. The total number of mineable ARD is 245,465,283.
+							The mining of Arda is divided into Epochs: each Epoch mines 36000 blocks of coins and is
+							targeted to last approximately 25 days. </p>
+					</div>
+					<a href="#" class="btn-secondary-line mobile-bottom-fix">Download Whitepaper</a>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 align-self-center">
+					<img src="assets/images/theme-1-about.svg" class="img-fluid float-right" alt="Arda ICO">
+				</div>
+			</div>
+			<!-- ***** About End ***** -->
+		</div>
+	</section>
+	<!-- ***** What is ICO End ***** -->
 
-    <!--==========================
-      Testimonials Sections
-    ============================-->
+	<!-- ***** Token Sale Start ***** -->
+	<section class="section gradient" id="token-sale">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="center-heading colored">
+						<h2 class="section-title">Token Sale</h2>
+					</div>
+				</div>
+				<div class="offset-lg-3 col-lg-6">
+					<div class="center-text colored">
+						<p>Fusce placerat pretium mauris, vel sollicitudin elit lacinia vitae. Quisque sit amet nisi erat. </p>
+					</div>					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="box">
+						<div class="row">
+							<!-- ***** Token Progress and Info Start ***** -->
+							<div class="col-lg-6 col-md-6 cols-m-12">
+								<!-- ***** Token Progress Start ***** -->
+								<div class="token-progress">
+									<ul id="test">
+										<li class="progress-active" data-progress="50%"></li>
+										<li class="item complate" data-position="0%">
+											<strong>0</strong>
+											<span>Start</span>
+										</li>
+										<li class="item complate" data-position="25%">
+											<strong>$2 M</strong>
+											<span>Pre Sale</span>
+										</li>
+										<li class="item complate" data-position="48%">
+											<strong>$12 M</strong>
+											<span>Soft Cap</span>
+										</li>
+										<li class="item" data-position="73%"></li>
+									</ul>
+								</div>
+								<!-- ***** Token Progress End ***** -->
 
-    <section id="testimonials">
-      <div class="container">
+								<!-- ***** Token Info Table Start ***** -->
+								<div class="token-info">
+									<div class="item">
+										<strong>Start</strong>
+										<span>Started</span>
+									</div>
+									<div class="item">
+										<strong>Token Supply</strong>
+										<span>100.000.000 ARD ETH</span>
+									</div>
+									<div class="item">
+										<strong>Accepted Tokens</strong>
+										<span>BTC, ETH, ETC, NEM, EOS</span>
+									</div>
+									<div class="item">
+										<strong>Project Protocol</strong>
+										<span>ETH, ETC - ARD 20</span>
+									</div>
+									<div class="item">
+										<strong>Circulation Supply</strong>
+										<span>37.000.000 ARD ETH</span>
+									</div>
+									<div class="item">
+										<strong>Maximum Cap</strong>
+										<span>60 M USD</span>
+									</div>
+								</div>
+								<!-- ***** Token Info Table End ***** -->
+							</div>
+							<!-- ***** Token Progress and Info End ***** -->
 
-        <header class="section-header">
-          <h3>{{$content->getContent('SMsJr1','title')}}</h3>
-          <p>{{$content->getContent('SMsJr1','description')}}</p>
-        </header>
+							<!-- ***** Token Countdown and Payment Start ***** -->
+							<div class="col-lg-6 col-md-6 cols-m-12">
+								<div class="token">
+									<h6 class="title">ICO SALE IS OPEN</h6>
+									<!-- ***** Countdown Start ***** -->
+									<ul class="countdown">
+										<li> 
+											<span class="days">00</span>
+											<p class="days_ref">days</p>
+										</li>
+										<li class="seperator"></li>
+										<li> 
+											<span class="hours">00</span>
+											<p class="hours_ref">hours</p>
+										</li>
+										<li class="seperator"></li>
+										<li> 
+											<span class="minutes">00</span>
+											<p class="minutes_ref">minutes</p>
+										</li>
+										<li class="seperator"></li>
+										<li> 
+											<span class="seconds">00</span>
+											<p class="seconds_ref">seconds</p>
+										</li>
+									</ul>
+									<!-- ***** Countdown End ***** -->
+									<div class="token-payment">
+										<span>Select Payment Method</span>
+										<div class="radios">
+											<div class="form-radio">
+												<input type="radio" id="check1" name="payment" checked=""/>
+												<label for="check1">
+													<i class="fa fa-bitcoin"></i>
+												</label>
+											</div>
+											<div class="form-radio">
+												<input type="radio" id="check2" name="payment"/>
+												<label for="check2">
+													<i class="fa fa-paypal"></i>
+												</label>
+											</div>
+											<div class="form-radio">
+												<input type="radio" id="check3" name="payment"/>
+												<label for="check3">
+													<i class="fa fa-cc-visa"></i>
+												</label>
+											</div>
+										</div>
+										<a href="dark-block-explorer.html" class="btn-primary-line">PURCHASE TOKEN NOW</a>
+									</div>
+								</div>
+							</div>
+							<!-- ***** Token Countdown and Payment End ***** -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ***** Token Sale End ***** -->
 
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
+	<!-- ***** Roadmap Start ***** -->
+	<section class="section" id="roadmap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="center-heading">
+						<h2 class="section-title">Roadmap</h2>
+					</div>
+				</div>
+				<div class="offset-lg-3 col-lg-6">
+					<div class="center-text">
+						<p>Cras at leo et lacus laoreet euismod. Nulla malesuada tortor ac scelerisque sollicitudin. </p>
+					</div>					
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="roadmap-lux-wrapper owl-carousel owl-theme">
+						<div class="roadmap-lux">
+							<div class="header complate">
+								<i class="fa fa-check"></i>
+								<h6 class="date">04<br/>2018</h6>
+							</div>
+							<div class="text">
+								<p>Development of a desktop application for Windows, Android Wallet. Connecting Sidechain + Secure Sandbox. Opportunity to create decentralized applications on the ARD platform.</p>
+							</div>
+						</div>
+						<div class="roadmap-lux">
+							<div class="header complate">
+								<i class="fa fa-check"></i>
+								<h6 class="date">05<br/>2018</h6>
+							</div>
+							<div class="text">
+								<p>Running the delegate system. As soon as the system of delegates on the platform is launched, the documentation on how to start the delegate will be available in the FAQ section</p>
+							</div>
+						</div>
+						<div class="roadmap-lux">
+							<div class="header">
+								<i class="fa fa-check"></i>
+								<h6 class="date">06<br/>2018</h6>
+							</div>
+							<div class="text">
+								<p>Placement of Arda on exchanges. The list of exchanges that placed ARD will be constantly updated, please, kindly check our site.</p>
+							</div>
+						</div>
+						<div class="roadmap-lux">
+							<div class="header">
+								<i class="fa fa-check"></i>
+								<h6 class="date">07<br/>2018</h6>
+							</div>
+							<div class="text">
+								<p>Updating the consensus of the Delegates. Increase in decentralization, through the distribution of a portion of the delegate's income to those who vote for them.</p>
+							</div>
+						</div>
+						<div class="roadmap-lux">
+							<div class="header">
+								<i class="fa fa-check"></i>
+								<h6 class="date">08<br/>2018</h6>
+							</div>
+							<div class="text">
+								<p>Adding additional crypto currencies to the wallet. Priority: Bitcoin, Litecoin, Dash, Zcash and Monero. The rest will be added during voting.</p>
+							</div>
+						</div>
+						<div class="roadmap-lux">
+							<div class="header">
+								<i class="fa fa-check"></i>
+								<h6 class="date">09<br/>2018</h6>
+							</div>
+							<div class="text">
+								<p>Creating a DAO module. Increase the effectiveness of the community through the creation of a special section of decision-making and budget management.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ***** Roadmap End ***** -->
 
-            <div class="owl-carousel testimonials-carousel wow fadeInUp">
-              @foreach ($test as $testimony)
-                <div class="testimonial-item">
-                <img src="{{ asset('storage/app/public/photos/'.$testimony->picture)}}" class="testimonial-img" alt="">
-                <h3>{{$testimony->name}}</h3>
-                <h4>{{$testimony->position}}</h4>
-                <p>
-                  {{$testimony->what_is_said}}
-                </p>
-              </div>  
-              @endforeach
-        
-            </div>
-          </div>
-        </div>
+	<!-- ***** Apps Start ***** -->
+	<section class="section gradient" id="apps">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12 align-self-center mobile-bottom-fix">
+					<div class="left-heading light">
+						<h2 class="section-title">Apps</h2>
+					</div>
+					<div class="left-text light m-bottom-0">
+						<p>Maecenas et consequat nunc. Duis faucibus orci eu varius sagittis. In quam elit, euismod a urna quis</p>
+						<ul>
+							<li>ARD Wallet</li>
+							<li>Transaction info</li>
+							<li>My account</li>
+							<li>Blockchain Explorer</li>
+							<li>Transfer</li>
+							<li>Connected peers to network ARD</li>
+						</ul>
+						<a class="app-download" href="#"><img src="assets/images/store-btn-apple.svg" alt=""></a>
+						<a class="app-download" href="#"><img src="assets/images/store-btn-google.svg" alt=""></a>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 align-self-center">
+					<img src="assets/images/mockups/dark.png" class="img-fluid float-right" alt="App">
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ***** Apps End ***** -->
+
+	<!-- ***** Team Start ***** -->
+	<section class="section bg-bottom" id="team">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="center-heading">
+						<h2 class="section-title">Team</h2>
+					</div>
+				</div>
+				<div class="offset-lg-3 col-lg-6">
+					<div class="center-text">
+						<p>Fusce placerat pretium mauris, vel sollicitudin elit lacinia vitae. Quisque sit amet nisi erat.</p>
+					</div>					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
+					<div class="team-square">
+						<div class="profile">
+							<div class="img">
+								<img src="assets/images/1-1.jpg" class="img-fluid" alt="">
+								<ul class="social">
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<h3 class="team-name">Lance Bogrol</h3>
+						<span>CEO & Lead Blockchain</span>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
+					<div class="team-square">
+						<div class="profile">
+							<div class="img">
+								<img src="assets/images/2-2.jpg" class="img-fluid" alt="">
+								<ul class="social">
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<h3 class="team-name">Brian Cumin</h3>
+						<span>CTO & Senior Developer</span>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
+					<div class="team-square">
+						<div class="profile">
+							<div class="img">
+								<img src="assets/images/3-3.jpg" class="img-fluid" alt="">
+								<ul class="social">
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<h3 class="team-name">Jackson Pot</h3>
+						<span>Blockchain App Developer</span>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.8s">
+					<div class="team-square">
+						<div class="profile">
+							<div class="img">
+								<img src="assets/images/4-4.jpg" class="img-fluid" alt="">
+								<ul class="social">
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<h3 class="team-name">Douglas Lyphe</h3>
+						<span>Community Management</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ***** Team End ***** -->
+
+	<!-- ***** Telegram Parallax Start ***** -->
+	<section class="parallax">
+		<div class="parallax-content">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="section-title">Join Us On Telegram</h1>		
+					</div>
+					<div class="offset-lg-3 col-lg-6">
+						<p>Fusce placerat pretium mauris, vel sollicitudin elit lacinia vitae. Quisque sit amet nisi erat.</p>
+					</div>
+					<div class="offset-lg-3 col-lg-6">
+						<a href="#" class="btn-white-line">Join Us On Telegram</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ***** Telegram Parallax End ***** -->
+
+	<!-- ***** FAQ Start ***** -->
+	<section class="section bg-top" id="faq">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="center-heading">
+						<h1 class="section-title">FAQ</h1>
+					</div>
+				</div>
+				<div class="offset-lg-3 col-lg-6">
+					<div class="center-text">
+						<p>Fusce placerat pretium mauris, vel sollicitudin elit lacinia vitae. Quisque sit amet nisi erat.</p>
+					</div>					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="accordion" id="accordionExample">
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="heading-1">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
+									<span class="badge">1</span> What are the benefits of digital currency?
+								</button>
+							</h2>
+							<div id="collapse-1" class="accordion-collapse collapse" aria-labelledby="heading-1" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<p>Donec tempus sodales dolor, at efficitur enim posuere auctor. Nam et nisi eu purus tempor faucibus aliquet vitae orci. Curabitur sollicitudin leo et magna pharetra efficitur. Nullam et scelerisque lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque faucibus sit amet odio eget scelerisque. Mauris dictum cursus ornare.</p>
+									<p>Ut vehicula blandit tellus. Sed sit amet bibendum leo, non sagittis neque. Nam fringilla fermentum tortor, ac gravida velit facilisis id. Donec congue ullamcorper velit, at malesuada arcu faucibus pretium. Donec rhoncus magna sit amet massa venenatis, ut convallis justo ultricies.</p>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="heading-2">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+									<span class="badge">2</span> How long has digital currency existed?
+								</button>
+							</h2>
+							<div id="collapse-2" class="accordion-collapse collapse" aria-labelledby="heading-2" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<p>Donec tempus sodales dolor, at efficitur enim posuere auctor. Nam et nisi eu purus tempor faucibus aliquet vitae orci. Curabitur sollicitudin leo et magna pharetra efficitur. Nullam et scelerisque lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque faucibus sit amet odio eget scelerisque. Mauris dictum cursus ornare.</p>
+									<p>Ut vehicula blandit tellus. Sed sit amet bibendum leo, non sagittis neque. Nam fringilla fermentum tortor, ac gravida velit facilisis id. Donec congue ullamcorper velit, at malesuada arcu faucibus pretium. Donec rhoncus magna sit amet massa venenatis, ut convallis justo ultricies.</p>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="heading-3">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+									<span class="badge">3</span> How will digital currency affect daily life in the US and around the world?
+								</button>
+							</h2>
+							<div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<p>Donec tempus sodales dolor, at efficitur enim posuere auctor. Nam et nisi eu purus tempor faucibus aliquet vitae orci. Curabitur sollicitudin leo et magna pharetra efficitur. Nullam et scelerisque lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque faucibus sit amet odio eget scelerisque. Mauris dictum cursus ornare.</p>
+									<p>Ut vehicula blandit tellus. Sed sit amet bibendum leo, non sagittis neque. Nam fringilla fermentum tortor, ac gravida velit facilisis id. Donec congue ullamcorper velit, at malesuada arcu faucibus pretium. Donec rhoncus magna sit amet massa venenatis, ut convallis justo ultricies.</p>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="heading-4">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+									<span class="badge">4</span> Why should I use ARD currency and how is it different from other currencies?
+								</button>
+							</h2>
+							<div id="collapse-4" class="accordion-collapse collapse" aria-labelledby="heading-4" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<p>Donec tempus sodales dolor, at efficitur enim posuere auctor. Nam et nisi eu purus tempor faucibus aliquet vitae orci. Curabitur sollicitudin leo et magna pharetra efficitur. Nullam et scelerisque lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque faucibus sit amet odio eget scelerisque. Mauris dictum cursus ornare.</p>
+									<p>Ut vehicula blandit tellus. Sed sit amet bibendum leo, non sagittis neque. Nam fringilla fermentum tortor, ac gravida velit facilisis id. Donec congue ullamcorper velit, at malesuada arcu faucibus pretium. Donec rhoncus magna sit amet massa venenatis, ut convallis justo ultricies.</p>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="heading-5">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
+									<span class="badge">5</span> How is ARD and Arda helping entrepreneurs?
+								</button>
+							</h2>
+							<div id="collapse-5" class="accordion-collapse collapse" aria-labelledby="heading-5" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<p>Donec tempus sodales dolor, at efficitur enim posuere auctor. Nam et nisi eu purus tempor faucibus aliquet vitae orci. Curabitur sollicitudin leo et magna pharetra efficitur. Nullam et scelerisque lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque faucibus sit amet odio eget scelerisque. Mauris dictum cursus ornare.</p>
+									<p>Ut vehicula blandit tellus. Sed sit amet bibendum leo, non sagittis neque. Nam fringilla fermentum tortor, ac gravida velit facilisis id. Donec congue ullamcorper velit, at malesuada arcu faucibus pretium. Donec rhoncus magna sit amet massa venenatis, ut convallis justo ultricies.</p>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="heading-6">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-6" aria-expanded="false" aria-controls="collapse-6">
+									<span class="badge">6</span> What benefits can I get from joining the ARD crowd funding platform?
+								</button>
+							</h2>
+							<div id="collapse-6" class="accordion-collapse collapse" aria-labelledby="heading-6" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<p>Donec tempus sodales dolor, at efficitur enim posuere auctor. Nam et nisi eu purus tempor faucibus aliquet vitae orci. Curabitur sollicitudin leo et magna pharetra efficitur. Nullam et scelerisque lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque faucibus sit amet odio eget scelerisque. Mauris dictum cursus ornare.</p>
+									<p>Ut vehicula blandit tellus. Sed sit amet bibendum leo, non sagittis neque. Nam fringilla fermentum tortor, ac gravida velit facilisis id. Donec congue ullamcorper velit, at malesuada arcu faucibus pretium. Donec rhoncus magna sit amet massa venenatis, ut convallis justo ultricies.</p>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="heading-7">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-7" aria-expanded="false" aria-controls="collapse-7">
+									<span class="badge">7</span> How do I convert my ARD currency into US dollars or other currencies?
+								</button>
+							</h2>
+							<div id="collapse-7" class="accordion-collapse collapse" aria-labelledby="heading-7" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<p>Donec tempus sodales dolor, at efficitur enim posuere auctor. Nam et nisi eu purus tempor faucibus aliquet vitae orci. Curabitur sollicitudin leo et magna pharetra efficitur. Nullam et scelerisque lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque faucibus sit amet odio eget scelerisque. Mauris dictum cursus ornare.</p>
+									<p>Ut vehicula blandit tellus. Sed sit amet bibendum leo, non sagittis neque. Nam fringilla fermentum tortor, ac gravida velit facilisis id. Donec congue ullamcorper velit, at malesuada arcu faucibus pretium. Donec rhoncus magna sit amet massa venenatis, ut convallis justo ultricies.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ***** FAQ End ***** -->
+
+	<!-- ***** Contact & Footer Start ***** -->
+	<footer id="contact">
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-12 col-sm-12">
+						<div class="contact">
+							<h3 class="section-title">Get In Touch</h3>
+							<p>Fusce placerat pretium mauris, vel sollicitudin elit lacinia vitae. Quisque sit amet nisi erat.</p>
+							<ul class="list">
+								<li><i class="fa fa-envelope-o"></i><a href="mailto:support@myicosite.com">support@myicosite.com</a></li>
+								<li><i class="fa fa-phone"></i><span>+44 0123 4567</span></li>
+								<li><i class="fa fa-paper-plane-o"></i><a href="#">Join us on Telegram</a></li>
+							</ul>
+							<ul class="social">
+								<li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+								<li><a href="#"><i class="fa fa-github-square"></i></a></li>
+							</ul>							
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-6 col-md-12 col-sm-12">
+						<div class="contact-form">
+							<h3 class="section-title">Say Something</h3>
+							<div class="form-element">
+								<input type="text" placeholder="Name, surname">
+							</div>
+							<div class="form-element">
+								<input type="email" placeholder="E-Mail">
+							</div>
+							<div class="form-element">
+								<textarea placeholder="Message"></textarea>
+							</div>
+							<div class="form-element">
+								<button class="btn-secondary-box">Submit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5">
+						<p class="copyright">2021 © Arda - Bitcoin and Cryptocurrency ICO Template - theme by Tempload</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- ***** Contact & Footer End ***** -->
 
 
-      </div>
-    </section><!-- #testimonials -->
+	<!-- jQuery -->
+	<script src="{{ asset ('temp/assets/js/jquery-3.6.0.min.js')}}  "></script>
 
-    <!--==========================
-      Transactions Sections
-    ============================-->
+	<!-- Bootstrap -->
+	<script src="{{ asset ('temp/assets/js/popper.js')}}"></script>
+	<script src="{{ asset ('temp/assets/js/bootstrap.min.js')}}"></script>
 
-    <section id="transaction" class="transaction">
-      <div class="container">
+	<!-- Plugins -->
+	<script src="{{ asset ('temp/assets/js/particles.min.js')}}"></script>
+	<script src="{{ asset ('temp/assets/js/scrollreveal.min.js')}}"></script>
+	<script src="{{ asset ('temp/assets/js/jquery.downCount.js')}}"></script>
+	<script src="{{ asset ('temp/assets/js/parallax.min.js')}}"></script>
+	<script src="{{ asset ('temp/assets/js/owl.carousel.min.js')}}"></script>
 
-        <header class="section-header">
-          <h3>{{$content->getContent('OtEicb','title')}}</h3>
-          <p>{{$content->getContent('OtEicb','description')}}</p>
-        </header>
-        <div class="row">
-          <div class="col-lg-12 col-md-6"></div>
-          <div class="transaction-box">
-            <ul class="nav nav-tabs">
-              <li class="nav-item">
-                <a class="nav-link active" href="#tab1" data-toggle="tab">Withdrawal</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#tab2" data-toggle="tab">Deposit</a>
-              </li>
-            </ul>
-
-            <div class="clearfix tab-content">
-              <div id="tab1" class="tab-pane active">
-                <div class="shadow table-responsive">
-                  <table class="table table-striped">
-                    <thead class="bg-light">
-                      <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">amount</th>
-                        <th scope="col">Mode</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($withdrawals as $deposit)
-                      <tr>
-                        <th scope="row">{{$deposit->duser->name}}</th>
-                        <td>{{$deposit->created_at}}</td>
-                        <td>{{$settings->currency}}{{$deposit->amount}}</td>
-                        <td>{{$deposit->payment_mode}}</td>
-                        <td>{{$deposit->status}}</td>
-                      </tr>
-                    @endforeach
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div id="tab2"  class="tab-pane">
-                <div class="shadow table-responsive">
-                  <table class="table table-striped">
-                    <thead class="bg-light">
-                      <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">amount</th>
-                        <th scope="col">Mode</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @foreach($deposits as $deposit)
-                        <tr>
-                          <th scope="row">{{$deposit->duser->name}}</th>
-                          <td>{{$deposit->created_at}}</td>
-                          <td>{{$settings->currency}}{{$deposit->amount}}</td>
-                          <td>{{$deposit->payment_mode}}</td>
-                          <td>{{$deposit->status}}</td>
-                        </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-            
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End transaction -->
-
-    <!--==========================
-      Frequently Ask questions
-    ============================-->
-    <section id="faq">
-      <div class="container">
-        <div class="section-header">
-          <h3 class="section-title">{{$content->getContent('OLZt1I','title')}}</h3>
-          <p>{{$content->getContent('OLZt1I','description')}}</p>
-          <span class="section-divider"></span>
-        </div>
-
-        <ul id="faq-list" class="wow fadeInUp">
-          @foreach ($faqs as $item)
-             <li>
-             <a data-toggle="collapse" class="collapsed" href="#faq{{$item->id}}">{{$item->question}} <i class="ion-android-remove"></i></a>
-             <div id="faq{{$item->id}}" class="collapse" data-parent="#faq{{$item->id}}">
-              <p>
-                {{$item->answer}} 
-              </p>
-            </div>
-          </li> 
-          @endforeach
-        </ul>
-
-      </div>
-    </section> <!-- #faq  ends-->
-
-    <!--==========================
-      Payments Sections
-    ============================-->
-
-    <section id="payments" class="wow fadeInUp">
-      <div class="container">
-
-        <header class="section-header">
-          <h3 >{{$content->getContent('U7zpEj','title')}}</h3>
-        </header>
-
-        <div class="owl-carousel payments-carousel">
-          <img src="{{ asset('temp/img/payments/payment-1.png')}}" alt="">
-          <img src="{{ asset('temp/img/payments/payment-2.png')}}" alt="">
-          <img src="{{ asset('temp/img/payments/payment-3.png')}}" alt="">
-          <img src="{{ asset('temp/img/payments/payment-4.png')}}" alt="">
-          <img src="{{ asset('temp/img/payments/payment-5.png')}}" alt="">
-          <img src="{{ asset('temp/img/payments/payment-6.png')}}" alt="">
-          <img src="{{ asset('temp/img/payments/payment-7.png')}}" alt="">
-          <img src="{{ asset('temp/img/payments/payment-8.png')}}" alt="">
-        </div>
-
-      </div>
-    </section><!-- #Payments ends -->
-
-    <!--==========================
-      Contact Section
-    ============================-->
-    <section id="contact" class="section-bg wow fadeInUp">
-      <div class="container">
-
-        <div class="section-header">
-          <h3>{{$content->getContent('9sNF7G','title')}}</h3>
-          <p>{{$content->getContent('9sNF7G','description')}}</p>
-          
-        </div>
-
-        <div class="row contact-info">
-
-          <div class="col-md-4">
-            <div class="contact-address">
-              <i class="ion-ios-location-outline"></i>
-              <h3>{{$content->getContent('52GPRA','title')}}</h3>
-              <p>{{$content->getContent('52GPRA','description')}}</p>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="contact-phone">
-              <i class="ion-ios-telephone-outline"></i>
-              <h3>{{$content->getContent('0EXbji','title')}}</h3>
-              <p><a href="tel: {{$content->getContent('0EXbji','description')}}"> {{$content->getContent('0EXbji','description')}}</a></p>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="contact-email">
-              <i class="ion-ios-email-outline"></i>
-              <h3>EMAIL</h3>
-              <p><a href="{{$settings->contact_email}}">{{$settings->contact_email}}</a> </p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="form">
-
-          @if(Session::has('message'))
-          <div class="col-lg-12">
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              {{ Session::get('message') }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          </div>
-          @endif
-
-          <form  action="{{action('App\Http\Controllers\UsersController@sendcontact')}}"  method="POST" role="form" class="contactForm">
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <input type="text" name="name" class="form-control" id="form3" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
-                <div class="validation"></div>
-              </div>
-              <div class="form-group col-md-6">
-                <input type="email" class="form-control" name="email" id="form2" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" required/>
-                <div class="validation"></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"required />
-              <div class="validation"></div>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" id="form8" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message" required></textarea>
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <div class="validation"></div>
-            </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
-          </form>
-        </div>
-
-      </div>
-    </section><!-- #contact -->
-
-  </main>
-  <!--==========================
-    Footer Sections
-  ============================-->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6 footer-info">
-            <h3>{{$settings->site_name}}</h3>
-            <p>{{$content->getContent('ETsdbc','description')}}</p>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="ion-ios-arrow-right scrollto"></i> <a href="#intro">Home</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#about">About us</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#services">Services</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-contact">
-           
-            <h4>Contact Us</h4>
-            <p>
-               {{$content->getContent('52GPRA','description')}} <br>
-              <a href="#" class="text-white"><strong>Phone:</strong> {{$content->getContent('0EXbji','description')}}<br></a>
-              <a href="#" class="text-white"><strong>Email:</strong> {{$settings->contact_email}}<br></a>
-            </p>
-
-            <div class="social-links">
-              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-            </div>
-
-          </div>
-
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright  {{date('Y')}} &nbsp;<strong> {{$settings->site_name}} &nbsp;</strong> All Rights Reserved.
-      </div>
-    </div>
-  </footer><!-- #footer ends -->
-    
-  <!-- Back to top -->
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="{{ asset('temp/lib/jquery/jquery.min.js')}}"></script>
-    <script src="{{ asset('temp/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{ asset('temp/lib/jquery.easing/jquery.easing.min.js')}}"></script>
-    <script src="{{ asset('temp/lib/php-email-form/validate.js')}}"></script>
-    <script src="{{ asset('temp/lib/waypoints/jquery.waypoints.min.js')}}"></script>
-    <script src="{{ asset('temp/lib/counterup/counterup.min.js')}}"></script>
-    <script src="{{ asset('temp/lib/isotope-layout/isotope.pkgd.min.js')}}"></script>
-    <script src="{{ asset('temp/lib/venobox/venobox.min.js')}}"></script>
-    <script src="{{ asset('temp/lib/owl.carousel/owl.carousel.min.js')}}"></script>
-    <script src="{{ asset('temp/lib/aos/aos.js')}}"></script>
-
-    <!-- Template Main Javascript File -->
-    <script src="{{ asset('temp/js/main.js')}}"></script>
-
+	<!-- Global Init -->
+	<script src="{{ asset ('temp/assets/js/particle-dark.js')}}"></script>
+	<script src="{{ asset ('temp/assets/js/custom.js')}}"></script>
 </body>
 </html>
-
