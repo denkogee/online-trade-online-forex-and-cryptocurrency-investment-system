@@ -1,3 +1,4 @@
+@inject('content', 'App\Http\Controllers\FrontController')
 
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -6,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home 01 - HYIP</title>
+    <title>{{$settings->site_name}} | {{$settings->site_title}}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -33,6 +34,17 @@
     <link rel="stylesheet" href="{{asset ('temp/asset/style.css')}} ">
     <!-- responsive css -->
     <link rel="stylesheet" href="{{asset ('temp/asset/css/responsive.css')}} ">
+
+    <style>
+        .contact-single {
+            padding: 20px;
+            box-shadow: 0 5px 25px rgb(0 0 0 / 10%);
+            border: 1px solid #150550;
+            margin-top: 50px;
+            background: #150550;
+            position: relative;
+        }
+    </style>
 </head>
 
 
@@ -40,7 +52,7 @@
     <!-- preloader  -->
     <div id="preloader"></div>
     <!-- Start header -->
-    <header class="header-one">
+    <header id="header" class="header-one">
         <!-- Start top bar -->
         <div class="topbar-area">
             <div class="container">
@@ -55,14 +67,8 @@
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="topbar-right">
-                            <select class="select d-inline-block">
-                                <option>Eng</option>
-                                <option>Esp</option>
-                                <option>Fra</option>
-                                <option>Deu</option>
-                            </select>
                             <ul>
-                                <li><a href="#"><img src="{{asset ('temp/asset/img/icon/login.png')}}" alt="">Login</a>
+                                <li><a href="#intro"><img src="{{asset ('temp/asset/img/icon/login.png')}}" alt="">Login</a>
                             </ul>
                         </div>
                     </div>
@@ -76,38 +82,49 @@
                 <div class="row">
                     <div class="col-xl-2 col-lg-2 col-md-3 d-flex align-items-center">
                         <div class="logo">
-                            <a href="index-2.html"><img src="{{asset ('temp/asset/img/logo/logo2.png')}}" alt=""></a>
+                            <a href="#intro"><img src="{{asset ('temp/asset/img/logo/logo2.png')}}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-10 col-lg-10 col-md-9">
-                        <div class="header-right">
-                            <a href="contact.html" class="hd-btn">Signup</a>
-                        </div>
+                        <!-- <div class="header-right">
+                            <a href="{{$settings->bot_link}}" class="hd-btn">Get started</a>
+                        </div> -->
                         <div class="header_menu f-right">
                             <nav id="mobile-menu">
                                 <ul class="main-menu">
-                                    <li><a href="index-2.html">Home</a></li>
-                                    <li><a href="user-panel.html">Dashboard</a></li>
-                                    <li><a href="plan.html">Investment</a></li>
-                                    <li class="menu-item-has-children"><a href="#">Pages</a>
-                                        <ul class="submenu">
-                                            <li><a href="about.html">About us</a></li>
-                                            <li><a href="review.html">Reviews</a></li>
-                                            <li><a href="faq.html">FAQ</a></li>
-                                            <li><a href="team.html">Our teams</a></li>
-                                            <li><a href="terms.html">Terms & Conditions</a></li>
-                                            <li><a href="error.html">Error</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="signup.html">Signup</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><a href="#">Blog</a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.html">Blog Grid</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="contact"><a href="contact.html">Contacts</a>
+                                    <li><a href="#about">About</a></li>
+                                    <li><a href="#services">Services</a></li>
+                                    <li><a href="#pricing">Pricing</a></li>
+                                    <li><a href="#testimonials">Testimonials</a></li>
+                                    <li><a href="#contact">Contact us</a></li>
+                                    @if($settings->site_preference =="Web dashboard only")
+                                        @guest
+                                        <li><a href="login" class="">Sign In</a></li>
+                                        <!-- <li><a href="register" class="btn-log ">Get started</a></li> -->
+                                        <div class="header-right">
+                                            <a href="register" class="hd-btn">Get started</a>
+                                        </div>
+                                        @else
+                                        <li class="nav-item dropdown avatar">
+                                                <a id="navbarDropdownMenuLink-55" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
+                                                <a href="dashboard" class="dropdown-item text-dark">Dashboard</a><br>
+                                                    <a href="{{ route('logout') }}" class="dropdown-item text-dark"
+                                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                                        Logout
+                                                    </a>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                        {{ csrf_field() }}
+                                                    </form>
+                                                </div>
+                                        </li>
+                                        @endguest
+                                        @else
+                                        <li><a href="{{$settings->bot_link}}" class="btn-log ">Get started</a></li>
+                                        @endif
                                 </ul>
                             </nav>
                         </div>
@@ -160,108 +177,103 @@
 			</div>
         </div>
         <!-- End intro Area -->
-        <!-- Start Counter area -->
-        <div class="counter-area fix bg-color area-padding-3">
+
+
+
+    <!--==========================
+      Services Section Starts
+    ============================-->
+        <div class="choose-service-area bg-color area-padding-2" id="services">
             <div class="container">
-                <!-- Start counter Area -->
-                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-4">
-                        <div class="single-fun">
-                            <span class="counter-icon"><i class="flaticon-034-reward"></i></span>
-                            <div class="counter-text">
-                                <h2><span class="count">22609</span>+</h2>
-                                <h4>All Members</h4>
+                <div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="section-headline text-center">
+                            <h2>{{$content->getContent('u0Ervr','title')}}</h2>
+                            <p>{{$content->getContent('u0Ervr','description')}}</p>
+						</div>
+					</div>
+				</div>
+                <div class="row">
+                    <!-- Start About -->
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="choose-services ">
+                            <div class="choose-top align-items-center">
+                                <a class="choose-images" href="#"><i class="flaticon-023-management"></i></a>
+                                 <h5>{{$content->getContent('Dwu6Bv','title')}}</h5>
+                            </div>
+                            <div class="choose-content">
+                                <p>{{$content->getContent('Dwu6Bv','description')}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4">
-                        <div class="single-fun">
-                            <span class="counter-icon"><i class="flaticon-016-graph"></i></span>
-                            <div class="counter-text">
-                                <h2>$<span class="count">500</span>k</h2>
-                                <h4>Total Deposit</h4>
+                    <!-- Start About -->
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="choose-services ">
+                            <div class="choose-top align-items-center">
+                                <a class="choose-images" href="#"><i class="flaticon-036-security"></i></a>
+                                <h5>{{$content->getContent('eMo1d2','title')}}</h5>
+                            </div>
+                            <div class="choose-content">
+                                <p>{{$content->getContent('eMo1d2','description')}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4">
-                        <div class="single-fun">
-                            <span class="counter-icon"><i class="flaticon-043-world"></i></span>
-                            <div class="counter-text">
-                                <h2><span class="count">80</span>+</h2>
-                                <h4>World Country</h4>
+                    <!-- Start services -->
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="choose-services ">
+                            <div class="choose-top align-items-center">
+                                <a class="choose-images" href="#"><i class="flaticon-003-approve"></i></a>
+                                <h5>{{$content->getContent('kEJPm3','title')}}</h5>
+                            </div>
+                            <div class="choose-content">
+                                <p>{{$content->getContent('kEJPm3','description')}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Start services -->
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="choose-services">
+                            <div class="choose-top align-items-center">
+                                <a class="choose-images" href="#"><i class="flaticon-042-wallet"></i></a>
+                                <h5>{{$content->getContent('bBSnFV','title')}}</h5>
+                            </div>
+                            <div class="choose-content">
+                                <p>{{$content->getContent('bBSnFV','description')}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Start services -->
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="choose-services ">
+                            <div class="choose-top align-items-center">
+                                <a class="choose-images" href="#"><i class="flaticon-032-report"></i></a>
+                                <h5>{{$content->getContent('DUK9pc','title')}}</h5>
+                            </div>
+                            <div class="choose-content">
+                                <p>{{$content->getContent('DUK9pc','description')}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Start services -->
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="choose-services">
+                            <div class="choose-top align-items-center">
+                                <a class="choose-images" href="#"><i class="flaticon-024-megaphone"></i></a>
+                                <h5>{{$content->getContent('VaeiMW','title')}}</h5>
+                            </div>
+                            <div class="choose-content">
+                                <p>{{$content->getContent('VaeiMW','description')}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Counter area -->
-        <!-- Start About Area -->
-        <div class="about-area bg-color fix area-padding-2">
-            <div class="container">
-               <div class="row">
-                   <div class="col-xl-12 col-lg-12 col-md-12">
-                        <div class="section-headline text-center">
-                            <h2>About Custom</h2>
-                            <p>Dummy text is also used to demonstrate the appearance of different typefaces and layouts</p>
-                        </div>
-                    </div>
-               </div>
-                <div class="row align-items-center">
-                    <div class="col-xl-7 col-lg-7 col-md-12">
-                        <div class="about-video">
-                            <img src="{{asset ('temp/asset/img/about/ab.jpg')}}" alt="">
-                            <div class="video-content">
-                                <a href="https://www.youtube.com/watch?v=O33uuBh6nXA" class="video-play video-zone">
-                                    <i class="fa fa-play"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Start services -->
-                    <div class="col-xl-5 col-lg-5 col-md-12">
-                        <div class="support-wraper">
-                            <div class="support-carousel owl-carousel item-indicator">
-                                <div class="single-support">
-                                    <div class="support-services">
-                                        <img class="support-images" src="img/about/ab-icon1.png" alt="">
-                                        <div class="support-content">
-                                            <h4>Instant Cashout</h4>
-                                            <p>Replacing a  maintains the amount of lines. When replacing a selection. help agencies to define their</p>
-                                        </div>
-                                    </div>
-                                    <div class="support-services">
-                                        <img class="support-images" src="img/about/ab-icon2.png" alt="">
-                                        <div class="support-content">
-                                            <h4>Refferral bonus</h4>
-                                            <p>Replacing a  maintains the amount of lines. When replacing a selection. help agencies to define their</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-support">
-                                    <div class="support-services">
-                                        <img class="support-images" src="img/about/ab-icon3.png" alt="">
-                                        <div class="support-content">
-                                            <h4>Live Support</h4>
-                                            <p>Replacing a  maintains the amount of lines. When replacing a selection. help agencies to define their</p>
-                                        </div>
-                                    </div>
-                                    <div class="support-services">
-                                        <img class="support-images" src="img/about/ab-icon4.png" alt="">
-                                        <div class="support-content">
-                                            <h4>Super security</h4>
-                                            <p>Replacing a  maintains the amount of lines. When replacing a selection. help agencies to define their</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                     <!-- Start services -->
-                 </div>
-            </div>
-        </div>
-        <!-- End About Area -->
+    <!--==========================
+      Services Section Ends
+    ============================-->
+
+
         <!-- Start Investment area -->
         <div class="invest-area bg-color-2 area-padding-2">
             <div class="container">
@@ -388,155 +400,7 @@
             </div>
         </div>
         <!-- End Investment area -->
-        <!-- Start Choose Area -->
-        <div class="choose-service-area bg-color area-padding-2">
-            <div class="container">
-                <div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="section-headline text-center">
-                            <h2>Why choose us</h2>
-                            <p>Help agencies to define their new business objectives and then create professional software.</p>
-						</div>
-					</div>
-				</div>
-                <div class="row">
-                    <!-- Start About -->
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="choose-services ">
-                            <div class="choose-top align-items-center">
-                                <a class="choose-images" href="#"><i class="flaticon-023-management"></i></a>
-                                 <h4>Referral program</h4>
-                            </div>
-                            <div class="choose-content">
-                                <p>Replacing a  maintains the amount of lines. When replacing a selection. help agencies to define their new business objectives and then create</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Start About -->
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="choose-services ">
-                            <div class="choose-top align-items-center">
-                                <a class="choose-images" href="#"><i class="flaticon-036-security"></i></a>
-                                <h4>Secure investment</h4>
-                            </div>
-                            <div class="choose-content">
-                                <p>Replacing a  maintains the amount of lines. When replacing a selection. help agencies to define their new business objectives and then create</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Start services -->
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="choose-services ">
-                            <div class="choose-top align-items-center">
-                                <a class="choose-images" href="#"><i class="flaticon-003-approve"></i></a>
-                                <h4>Registered company</h4>
-                            </div>
-                            <div class="choose-content">
-                                <p>Replacing a  maintains the amount of lines. When replacing a selection. help agencies to define their new business objectives and then create</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Start services -->
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="choose-services">
-                            <div class="choose-top align-items-center">
-                                <a class="choose-images" href="#"><i class="flaticon-042-wallet"></i></a>
-                                <h4>Instant withdrawal</h4>
-                            </div>
-                            <div class="choose-content">
-                                <p>Replacing a  maintains the amount of lines. When replacing a selection. help agencies to define their new business objectives and then create</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Start services -->
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="choose-services ">
-                            <div class="choose-top align-items-center">
-                                <a class="choose-images" href="#"><i class="flaticon-032-report"></i></a>
-                                <h4>SSL Secured</h4>
-                            </div>
-                            <div class="choose-content">
-                                <p>Replacing a  maintains the amount of lines. When replacing a selection. help agencies to define their new business objectives and then create</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Start services -->
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="choose-services">
-                            <div class="choose-top align-items-center">
-                                <a class="choose-images" href="#"><i class="flaticon-024-megaphone"></i></a>
-                                <h4>24/7 support</h4>
-                            </div>
-                            <div class="choose-content">
-                                <p>Replacing a  maintains the amount of lines. When replacing a selection. help agencies to define their new business objectives and then create</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Choose area -->
-        <!-- Start How to area -->
-        <div class="how-to-area bg-color-2 area-padding">
-            <div class="container">
-                <div class="row">
-					<div class="col-xl-12 col-lg-12 col-md-12">
-						<div class="section-headline text-center">
-                            <h2>How to start</h2>
-                            <p>Help agencies to define their new business objectives and then create professional software.</p>
-						</div>
-					</div>
-				</div>
-                <div class="row">
-                    <!-- single-well end-->
-                    <div class="col-xl-4 col-lg-4 col-md-4">
-                        <div class="single-how first-item">
-                            <div class="how-img">
-                                <span class="h-number">01</span>
-                                <a class="big-icon" href="#"><img src="{{asset ('temp/asset/img/about/h1.png')}}" alt=""></a>
-                            </div>
-                            <div class="how-wel">
-                                <div class="how-content">
-                                    <h4>Get access</h4>
-                                    <p>Aspernatur sit adipisci quaerat unde at neque Redug Lagre dolor sit amet consectetu. Agencies to define their new business objectives and then create</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-well end-->
-                    <div class="col-xl-4 col-lg-4 col-md-4">
-                        <div class="single-how ">
-                            <div class="how-img">
-                                <span class="h-number">02</span>
-                                <a class="big-icon" href="#"><img src="{{asset ('temp/asset/img/about/h2.png')}}" alt=""></a>
-                            </div>
-                            <div class="how-wel">
-                                <div class="how-content">
-                                    <h4>Investment</h4>
-                                    <p>Aspernatur sit adipisci quaerat unde at neque Redug Lagre dolor sit amet consectetu. Agencies to define their new business objectives and then create</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-well end-->
-                    <div class="col-xl-4 col-lg-4 col-md-4">
-                        <div class="single-how thired-item">
-                            <div class="how-img">
-                               <span class="h-number">03</span>
-                                <a class="big-icon" href="#"><img src="{{asset ('temp/asset/img/about/h3.png')}}" alt=""></a>
-                            </div>
-                            <div class="how-wel">
-                                <div class="how-content">
-                                    <h4>Get Profit</h4>
-                                    <p>Aspernatur sit adipisci quaerat unde at neque Redug Lagre dolor sit amet consectetu. Agencies to define their new business objectives and then create</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End How to area -->
+
         <!--Start payment-history area -->
         <div class="payment-history-area fix area-padding">
             <div class="container">
@@ -681,55 +545,273 @@
         </div>
         <!-- End payment-history area -->
         <!-- Start payment-history area -->
-        <div class="profit-calculater-area bg-color-2 fix area-padding">
+        <div class="contact-page bg-color area-padding">
+
+        <div class="container">
+                <!-- Start counter Area -->
+            </div>
+
             <div class="container">
                 <div class="row">
+
+                <!-- <div class="row"> -->
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="section-headline text-center">
                             <h2>Profit Calculater</h2>
                             <p>Help agencies to define their new business objectives and then create professional software.</p>
 						</div>
 					</div>
-				</div>
-                <div class="row align-items-center">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="about-profit-inner">
-                            <div class="about-calculater">
-                                <h3>About profit calculater</h3>
-                                <p>The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy. The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy</p>
-                                <p>The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy. The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy</p>
-                            </div>
+				<!-- </div> -->
+
+                <!-- <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="about-profit-inner">
+                        <div class="about-calculater">
+                            <h3>CONTACT US</h3>
+                            <p>The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy. The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy</p>
+                            <p>The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy. The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy</p>
                         </div>
                     </div>
-					<div class="col-md-6 col-sm-6 col-xs-12">
-						<div class="profit-calculater-inner">
-						    <form class="profit-calculator">
+                </div> -->
+                    
+                    <!-- End contact icon -->
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                        <div class="contact-form">
+                           <form id="contactForm" method="POST" action="http://rockstheme.com/rocks/live-goldhyip/contact.php" class="contact-form">
                                 <div class="row">
-                                  <div class="col-lg-6 mb-30">
-                                    <label>Choose Plan</label>
-                                    <select class="calculater-select-bg">
-                                      <option>Silver Plan</option>
-                                      <option>Diamond Plan</option>
-                                      <option>Platinum Plan</option>
-                                      <option>Gold Plan</option>
-                                      <option>Premium Plan</option>
-                                    </select>
-                                  </div>
-                                  <div class="col-lg-6 mb-30">
-                                    <label>Invest Amount</label>
-                                    <input type="text" name="invest_amount" id="invest_amount" placeholder="0.00" class="form-control base--bg">
-                                  </div>
-                                  <div class="col-lg-12">
-                                    <label>Profit Amount</label>
-                                    <input type="text" name="profit_amount" id="profit_amount" placeholder="0.00" class="form-control base--bg" disabled="">
-                                  </div>
-                                </div>
-                            </form>
-						</div>
-					</div>
-				</div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" id="name" class="form-control" placeholder="Name" required="" data-error="Please enter your name">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="email" class="email form-control" id="email" placeholder="Email" required="" data-error="Please enter your email">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <input type="text" id="msg_subject" class="form-control" placeholder="Subject" required="" data-error="Please enter your message subject">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <textarea id="message" rows="7" placeholder="Massage" class="form-control" required="" data-error="Write your message"></textarea>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                        <button type="submit" id="submit" class="contact-btn">Submit</button>
+                                        <div id="msgSubmit" class="h3 text-center hidden"></div> 
+                                        <div class="clearfix"></div>
+                                    </div>   
+                                </div> 
+                            </form>  
+                        </div>
+                    </div>
+                    <!-- End contact Form -->
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <div class="contact-single">
+                        <span class="counter-icon"><i class="flaticon-034-reward"></i></span>
+                            <h3>ADDRESS</h3>
+                            <h6>No 10 Mission Road, Nigeria</h6>                            
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <div class="contact-single">
+                        <span class="counter-icon"><i class="flaticon-034-reward"></i></span>
+                            <h3>ADDRESS</h3>
+                            <h6>No 10 Mission Road, Nigeria</h6>                            
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <div class="contact-single">
+                        <span class="counter-icon"><i class="flaticon-034-reward"></i></span>
+                            <h3>ADDRESS</h3>
+                            <h6>No 10 Mission Road, Nigeria</h6>                            
+                        </div>
+                    </div>                    
+                </div>
+                
             </div>
         </div>
+
+
+        <div class="faq-area bg-color-2 area-padding">
+            <div class="container">
+                <div class="row">
+                   <div class="col-xl-12 col-lg-12 col-md-12">
+                        <div class="section-headline text-center">
+                            <h2>Important Faq</h2>
+                            <p>Dummy text is also used to demonstrate the appearance of different typefaces and layouts</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Start Column Start -->
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="company-faq-left">
+                            <div class="faq_inner">
+                                <div id="accordion">
+                                    <div class="card">
+                                      <div class="card-header white-bg" id="headingOne">
+                                        <h4 class="faq-top-text">
+                                          <button class="faq-accordion-btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            1. We are the best invest platform in the world? 
+                                          </button>
+                                        </h4>
+                                      </div>
+
+                                      <div id="collapseOne" class="collapse show " aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                      <div class="card-header white-bg" id="headingTwo">
+                                        <h4 class="faq-top-text">
+                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            2. World class creative experts team member?
+                                          </button>
+                                        </h4>
+                                      </div>
+                                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                      <div class="card-header white-bg" id="headingThree">
+                                        <h4 class="faq-top-text">
+                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            3. Clients satisfaction make company value?
+                                          </button>
+                                        </h4>
+                                      </div>
+                                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                        <div class="card-body">
+                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                      <div class="card-header white-bg" id="headingFour">
+                                        <h4 class="faq-top-text">
+                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            4. How to successful our business plan?
+                                          </button>
+                                        </h4>
+                                      </div>
+                                      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                        <div class="card-body">
+                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                      <div class="card-header white-bg" id="headingFive">
+                                        <h4 class="faq-top-text">
+                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                           5. How to possible to invest to profit?
+                                          </button>
+                                        </h4>
+                                      </div>
+                                      <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                        <div class="card-body">
+                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End FAQ -->
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="company-faq">
+                            <div class="faq_inner">
+                                <div id="accordion_2">
+                                    <div class="card">
+                                      <div class="card-header white-bg" id="headingSix">
+                                        <h4 class="faq-top-text">
+                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                            6. We are the best clean platform in the world? 
+                                          </button>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion_2">
+                                        <div class="card-body">
+                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                      <div class="card-header white-bg" id="headingSeven">
+                                        <h4 class="faq-top-text">
+                                          <button class="faq-accordion-btn" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                                            7. World class creative experts team member?
+                                          </button>
+                                        </h4>
+                                      </div>
+                                      <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven" data-parent="#accordion_2" style="">
+                                        <div class="card-body">
+                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                      <div class="card-header white-bg" id="headingEight">
+                                        <h4 class="faq-top-text">
+                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                            8. Clients satisfaction make company value?
+                                          </button>
+                                        </h4>
+                                      </div>
+                                      <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion_2">
+                                        <div class="card-body">
+                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                      <div class="card-header white-bg" id="headingNine">
+                                        <h4 class="faq-top-text">
+                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                            9. How to successful our business plan?
+                                          </button>
+                                        </h4>
+                                      </div>
+                                      <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion_2">
+                                        <div class="card-body">
+                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                      <div class="card-header white-bg" id="headingTen">
+                                        <h4 class="faq-top-text">
+                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                            10. How to change you life investment?
+                                          </button>
+                                        </h4>
+                                      </div>
+                                      <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion_2">
+                                        <div class="card-body">
+                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End FAQ -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- End payment-history area -->
         <!-- Start Reviews Area -->
         <div class="reviews-area bg-color area-padding">
@@ -843,187 +925,7 @@
             </div>
         </div>
         <!-- End Reviews area -->
-        <!-- Start Feature Area -->
-        <div class="feature-area bg-color-2 fix area-padding">
-            <div class="container">
-                <div class="row align-items-center">
-                   <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="feature-inner">
-                            <div class="left-headline">
-                                <h2>Our apps of your mobile for any update</h2>
-                                <p>The phrasal sequence of the Lorem Ipsum text is now so and that many the phrase when found, an alarm can be raised. phrasal sequence of the Lorem Ipsum text is now so and that many the phrase when found, an alarm can be raised</p>
-                            </div>
-                            <div class="down-btn">
-                                <a href="#" class="app-btn left-btn">Play store</a>
-                                <a href="#" class="app-btn right-btn">App store</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="feature-content">
-                            <div class="feature-images">
-                                <img src="{{asset ('temp/asset/img/feature/f2.png')}}" alt="" class="first-img">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       <!-- End Feature Area -->
-        <!-- Start Blog area -->
-        <div class="blog-area bg-color area-padding-2">
-            <div class="container">
-                <div class="row">
-					<div class="col-xl-12 col-lg-12 col-md-12">
-                        <div class="section-headline text-center">
-                            <h2>Latest Blog</h2>
-                            <p>Dummy text is also used to demonstrate the appearance of different typefaces and layouts</p>
-                        </div>
-                    </div>
-				</div>
-                <div class="row">
-                    <!-- Start single blog -->
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="single-blog">
-                            <div class="blog-image">
-                                <a class="image-scale" href="#">
-                                    <img src="{{asset ('temp/asset/img/blog/b1.jpg')}}" alt="">
-                                </a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-category">
-                                   <span>Investor</span>
-                                </div>
-                                <div class="blog-meta">
-                                    <span class="admin-type">
-                                        <i class="fa fa-user"></i>
-                                        Admin
-                                    </span>
-                                    <span class="date-type">
-                                       <i class="fa fa-calendar"></i>
-                                        28 mar, 2021
-                                    </span>
-                                    <span class="comments-type">
-                                        <i class="fa fa-comment-o"></i>
-                                        32
-                                    </span>
-                                </div>
-                                <div class="blog-title">   
-                                    <a href="#">
-                                        <h4>The phrasal sequence of the Lorem Ipsum text.</h4>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End single blog -->
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="single-blog">
-                            <div class="blog-image">
-                                <a class="image-scale" href="#">
-                                    <img src="{{asset ('temp/asset/img/blog/b2.jpg')}}" alt="">
-                                </a>
-                            </div>
-                            <div class="blog-content">
-                              <div class="blog-category">
-                                   <span>Community</span>
-                               </div>
-                                <div class="blog-meta">
-                                    <span class="admin-type">
-                                        <i class="fa fa-user"></i>
-                                        Admin
-                                    </span>
-                                    <span class="date-type">
-                                       <i class="fa fa-calendar"></i>
-                                        21 mar, 2021
-                                    </span>
-                                    <span class="comments-type">
-                                        <i class="fa fa-comment-o"></i>
-                                        32
-                                    </span>
-                                </div>
-                               <div class="blog-title">
-                                    <a href="#">
-                                        <h4>Make sure the prototype looks finished by.</h4>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End single blog -->
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="single-blog">
-                            <div class="blog-image">
-                                <a class="image-scale" href="#">
-                                    <img src="{{asset ('temp/asset/img/blog/b3.jpg')}}" alt="">
-                                </a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-category">
-                                   <span>Media</span>
-                                </div>
-                                <div class="blog-meta">
-                                    <span class="admin-type">
-                                        <i class="fa fa-user"></i>
-                                        Admin
-                                    </span>
-                                    <span class="date-type">
-                                       <i class="fa fa-calendar"></i>
-                                        14 Mar, 2021
-                                    </span>
-                                    <span class="comments-type">
-                                        <i class="fa fa-comment-o"></i>
-                                        32
-                                    </span>
-                                </div>
-                               <div class="blog-title">
-                                    <a href="#">
-                                        <h4>Designer have to make sure the prototype looks.</h4>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End single blog -->
-                    <div class="d-lg-none d-xl-none col-md-6 ">
-                        <div class="single-blog">
-                            <div class="blog-image">
-                                <a class="image-scale" href="#">
-                                    <img src="{{asset ('temp/asset/img/blog/b4.jpg')}}" alt="">
-                                </a>
-                            </div>
-                            <div class="blog-content">
-                               <div class="blog-category">
-                                   <span>Profit</span>
-                               </div>
-                               <div class="blog-meta">
-                                    <span class="admin-type">
-                                        <i class="fa fa-user"></i>
-                                        Admin
-                                    </span>
-                                    <span class="date-type">
-                                       <i class="fa fa-calendar"></i>
-                                        28 Feb, 2021
-                                    </span>
-                                    <span class="comments-type">
-                                        <i class="fa fa-comment-o"></i>
-                                        32
-                                    </span>
-                                </div>
-                               <div class="blog-title">
-                                    <a href="#">
-                                        <h4>Designer have to make sure the prototype looks.</h4>
-                                    </a>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End single blog -->
-                </div>
-                <!-- End row -->
-            </div>
-        </div>
-        <!-- End Blog area -->
+
         <!-- Start Subscribe area -->
         <div class="subscribe-area bg-color">
             <div class="container">
