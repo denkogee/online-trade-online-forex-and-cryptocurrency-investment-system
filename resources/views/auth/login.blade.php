@@ -8,7 +8,7 @@
                 <div class="col-12 col-md-6 col-lg-6 col-sm-10 col-xl-6 ">
                     <div class="mb-4 text-center">
                        
-                        <a href="{{url('/')}}" ><img src="{{ asset('storage/app/public/photos/'.$settings->logo)}}" alt="{{$settings->site_name}}" title="" class="img-fluid auth__logo" /></a>
+                        <!-- <a href="{{url('/')}}" ><img src="{{ asset('storage/app/public/photos/'.$settings->logo)}}" alt="{{$settings->site_name}}" title="" class="img-fluid auth__logo" /></a> -->
                             @if(Session::has('status'))
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     {{ session('status') }}
@@ -50,7 +50,7 @@
                             </div>
     
                             <div class="mb-3 text-center">
-                                <small class="mb-2 text-center ">Forget your Password <a href="{{ route('password.request') }}" class="ml-1 link">Reset.</a> </small>
+                                <!-- <small class="mb-2 text-center ">Forget your Password <a href="{{ route('password.request') }}" class="ml-1 link">Reset.</a> </small> -->
                                 <small class="text-center ">Dont have an Account yet? <a href="{{route('register')}}" class="ml-1 link">Sign up.</a> </small>
                             </div>
                             <div class="text-center">

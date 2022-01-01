@@ -44,6 +44,10 @@
             background: #150550;
             position: relative;
         }
+        .footer-area-bottom .copyright {
+            text-align: center;
+            /* padding-top: 30px; */
+        }
     </style>
 </head>
 
@@ -60,8 +64,8 @@
                     <div class=" col-md-8 col-sm-8 col-xs-12">
                         <div class="topbar-left">
                             <ul>
-                                <li><a href="#"><i class="fa fa-envelope"></i> info@custom23.com</a></li>
-                                <li><a href="#"><i class="fa fa-clock-o"></i> Live support</a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i> {{$settings->contact_email}} </a></li>
+                                <!-- <li><a href="#"><i class="fa fa-clock-o"></i> Live support</a></li> -->
                             </ul>  
                         </div>
                     </div>
@@ -92,7 +96,6 @@
                         <div class="header_menu f-right">
                             <nav id="mobile-menu">
                                 <ul class="main-menu">
-                                    <li><a href="#about">About</a></li>
                                     <li><a href="#services">Services</a></li>
                                     <li><a href="#pricing">Pricing</a></li>
                                     <li><a href="#testimonials">Testimonials</a></li>
@@ -105,13 +108,24 @@
                                             <a href="register" class="hd-btn">Get started</a>
                                         </div>
                                         @else
-                                        <li class="nav-item dropdown avatar">
+                                        
+
+                                        <!-- <li class="menu-item-has-children">
+                                            <a href="#">{{ Auth::user()->name }}</a>
+                                            <ul class="submenu">
+                                                <li><a href="blog-details.html">Blog Details</a></li>
+                                            </ul>
+                                        </li> -->
+                                        
+                                        <li class="nav-item dropdown menu-item-has-children avatar">
                                                 <a id="navbarDropdownMenuLink-55" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                     {{ Auth::user()->name }} <span class="caret"></span>
                                                 </a>
-                                                <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                                                <a href="dashboard" class="dropdown-item text-dark">Dashboard</a><br>
-                                                    <a href="{{ route('logout') }}" class="dropdown-item text-dark"
+                                                <ul class="submenu">
+                                                <li>
+                                                    <a href="dashboard" class="dropdown-item">Dashboard</a><br>
+                                                </li>
+                                                <li> <a href="{{ route('logout') }}" class="dropdown-item"
                                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                                         Logout
@@ -119,11 +133,14 @@
                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                         {{ csrf_field() }}
                                                     </form>
-                                                </div>
+                                                    </li>
+                                                    </ul>                                                
                                         </li>
+
+
                                         @endguest
                                         @else
-                                        <li><a href="{{$settings->bot_link}}" class="btn-log ">Get started</a></li>
+                                        <li><a href="register" class="btn-log ">Get started</a></li>
                                         @endif
                                 </ul>
                             </nav>
@@ -152,15 +169,15 @@
 								<div class="slide-all-text">
 								    <!-- layer 1 -->
                                    <div class="layer-1 wow fadeInUp" data-wow-delay="0.3s">
-                                        <h4 class="title-1">Safe and secure investment company</h4>
+                                        <h4 class="title-1">{{$content->getContent('toe3Ew','description')}} </h4>
                                     </div>
                                     <!-- layer 2 -->
                                     <div class="layer-2 wow fadeInUp" data-wow-delay="0.3s">
-                                        <h1 class="title-2">Invest for future in best platform</h1>
+                                        <h1 class="title-2">{{$content->getContent('toe3Ew','title')}}</h1>
                                     </div>
                                     <!-- layer 3 -->
                                         <div class="layer-3 wow fadeInUp" data-wow-delay="0.7s">
-                                        <a href="services.html" class="ready-btn" >Get Started</a>
+                                        <a href="register" class="ready-btn" >Get Started</a>
                                     </div>
 								</div>
 							</div>
@@ -273,143 +290,63 @@
       Services Section Ends
     ============================-->
 
-
-        <!-- Start Investment area -->
-        <div class="invest-area bg-color-2 area-padding-2">
+    <!--==========================
+      Investment Section Starts
+    ============================-->
+        <div class="invest-area bg-color-2 area-padding-2" id="pricing">
             <div class="container">
                 <div class="row">
                    <div class="col-xl-12 col-lg-12 col-md-12">
                         <div class="section-headline text-center">
-                            <h2>Investment plan</h2>
-                            <p>Dummy text is also used to demonstrate the appearance of different typefaces and layouts</p>
+                            <h2>{{$content->getContent('vr6Xw0','title')}}</h2>
+                            <p>{{$content->getContent('vr6Xw0','description')}}</p>
                         </div>
                     </div>
                </div>
                 <div class="row">
+
+                @foreach ($plans as $plan)
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="pri_table_list text-center">
                             <div class="top-price-inner">
-                                <h3>Silver plan</h3>
+                                <h3>{{$plan->name}}</h3>
                                 <div class="rates">
-                                    <span class="prices">5%</span><span class="users">Weekly</span>
+                                    <!-- <span class="prices">5%</span><span class="users">Weekly</span> -->
+                                        <span class="prices">{{$settings->currency}} {{$plan->price}}</span>
+                                        <h6>{{$settings->s_currency}}</h6>
                                 </div>
                             </div>
                             <ol class="pricing-text">
-                                <li class="check">Minimam Invest : $100</li>
-                                <li class="check">Maximam Invest : $1000</li>
-                                <li class="check">Avarage Monthly : 50% </li>
+                                <li><i class="check"></i>Min. Possible deposit: {{$settings->currency}}{{$plan->min_price}}</li>
+                                <li><i class="check"></i>Max. Possible deposit: {{$settings->currency}}{{$plan->max_price}}</li>
+                                <li><i class="check"></i>{{$settings->currency}}{{$plan->minr}} Minimum return</li>
+                                <li><i class="check"></i>{{$settings->currency}}{{$plan->maxr}} Maximum return</li>
+                                <li><i class="check"></i>{{$settings->currency}}{{$plan->gift}} Gift Bonus</li>
                             </ol>
                             <div class="price-btn">
-                                <a class="blue" href="#">Invest Now</a>
+                                <a class="blue" href="">Invest Now</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="pri_table_list text-center">
-                            <div class="top-price-inner">
-                                <h3>Gold plan</h3>
-                                <div class="rates">
-                                    <span class="prices">15%</span><span class="users">Weekly</span>
-                                </div>
-                            </div>
-                            <ol class="pricing-text">
-                                <li class="check">Minimam Invest : $1000</li>
-                                <li class="check">Maximam Invest : $10000</li>
-                                <li class="check">Avarage Monthly :100% </li>
-                            </ol>
-                            <div class="price-btn">
-                                <a class="blue" href="#">Invest Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="pri_table_list text-center">
-                            <div class="top-price-inner">
-                                <h3>Platinum plan</h3>
-                                <div class="rates">
-                                    <span class="prices">50%</span><span class="users">Weekly</span>
-                                </div>
-                            </div>
-                            <ol class="pricing-text">
-                                <li class="check">Minimam Invest : $1000</li>
-                                <li class="check">Maximam Invest : $50000</li>
-                                <li class="check">Avarage Monthly : 200% </li>
-                            </ol>
-                            <div class="price-btn">
-                                <a class="blue" href="#">Invest Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="pri_table_list text-center">
-                            <span class="base">Best sale</span>
-                            <div class="top-price-inner">
-                                <h3>Diamond plan</h3>
-                                <div class="rates">
-                                    <span class="prices">100%</span><span class="users">Monthly</span>
-                                </div>
-                            </div>
-                            <ol class="pricing-text">
-                                <li class="check">Minimam Invest : $1000</li>
-                                <li class="check">Maximam Invest : $50000</li>
-                                <li class="check">Avarage Monthly : 250% </li>
-                            </ol>
-                            <div class="price-btn">
-                                <a class="blue" href="#">Invest Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="pri_table_list text-center">
-                            <span class="base">Best sale</span>
-                            <div class="top-price-inner">
-                                <h3>Premium plan</h3>
-                                <div class="rates">
-                                    <span class="prices">100%</span><span class="users">Monthly</span>
-                                </div>
-                            </div>
-                            <ol class="pricing-text">
-                                <li class="check">Minimam Invest : $1000</li>
-                                <li class="check">Maximam Invest : $50000</li>
-                                <li class="check">Avarage Monthly : 250% </li>
-                            </ol>
-                            <div class="price-btn">
-                                <a class="blue" href="#">Invest Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="pri_table_list text-center">
-                            <div class="top-price-inner">
-                                <h3>Premium plan</h3>
-                                <div class="rates">
-                                    <span class="prices">100%</span><span class="users">Monthly</span>
-                                </div>
-                            </div>
-                            <ol class="pricing-text">
-                                <li class="check">Minimam Invest : $1000</li>
-                                <li class="check">Maximam Invest : $50000</li>
-                                <li class="check">Avarage Monthly : 250% </li>
-                            </ol>
-                            <div class="price-btn">
-                                <a class="blue" href="#">Invest Now</a>
-                            </div>
-                        </div>
-                    </div>
+                @endforeach
+                   
                 </div>
             </div>
         </div>
-        <!-- End Investment area -->
+        <!--==========================
+            Investment Section Ends
+        ============================-->
 
         <!--Start payment-history area -->
-        <div class="payment-history-area fix area-padding">
+        <div class="payment-history-area fix area-padding"  id="transaction">
             <div class="container">
                 <div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="section-headline left-headline">
-                            <h2>Payments update</h2>
-                            <p>Help agencies to define their new business objectives and then create professional software.</p>
+                            <h2>{{$content->getContent('OtEicb','title')}}</h2>
+                            <p>{{$content->getContent('OtEicb','description')}}</p>
 						</div>
+
 					</div>
 				</div>
                 <div class="row">
@@ -439,48 +376,26 @@
                                     <div class="diposite-box">
                                         <div class="deposite-table">
                                             <table>
+                                            <thead>
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Date</th>
-                                                    <th>Amount</th>
-                                                    <th>Currency</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">amount</th>
+                                                    <th scope="col">Mode</th>
+                                                    <th scope="col">Status</th>
                                                 </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($withdrawals as $deposit)
                                                 <tr>
-                                                    <td><img src="{{asset ('temp/asset/img/icon/m.png')}}" alt="">Admond sayhel</td>
-                                                    <td>Jan 02, 2020</td>
-                                                    <td>$1000</td>
-                                                    <td>Bitcoin</td>
+                                                    <th scope="row">{{$deposit->duser->name}}</th>
+                                                    <td>{{$deposit->created_at}}</td>
+                                                    <td>{{$settings->currency}}{{$deposit->amount}}</td>
+                                                    <td>{{$deposit->payment_mode}}</td>
+                                                    <td>{{$deposit->status}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td><img src="{{asset ('temp/asset/img/icon/m1.png')}}" alt="">Jonshon</td>
-                                                    <td>Dec 12, 2019</td>
-                                                    <td>$5000</td>
-                                                    <td>USD</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="{{asset ('temp/asset/img/icon/m2.png')}}" alt="">Hopper</td>
-                                                    <td>Dec 22, 2019</td>
-                                                    <td>$4000</td>
-                                                    <td>Ripple</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="{{asset ('temp/asset/img/icon/m3.png')}}" alt="">Admond sayhel</td>
-                                                    <td>Jan 02, 2020</td>
-                                                    <td>$3000</td>
-                                                    <td>Bitcoin</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="{{asset ('temp/asset/img/icon/m4.png')}}" alt="">Anjel july</td>
-                                                    <td>Jan 05, 2020</td>
-                                                    <td>$500</td>
-                                                    <td>USD</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="{{asset ('temp/asset/img/icon/m5.png')}}" alt="">Lagisha</td>
-                                                    <td>Jan 12, 2020</td>
-                                                    <td>$5000</td>
-                                                    <td>Bitcoin</td>
-                                                </tr>
+                                                @endforeach
+                                            <tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -491,48 +406,26 @@
                                     <div class="diposite-box">
                                         <div class="deposite-table">
                                             <table>
+                                            <thead>
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Date</th>
-                                                    <th>Amount</th>
-                                                    <th>Currency</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">amount</th>
+                                                    <th scope="col">Mode</th>
+                                                    <th scope="col">Status</th>
                                                 </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($deposits as $deposit)
                                                 <tr>
-                                                    <td><img src="{{asset ('temp/asset/img/icon/m.png')}}" alt="">Admond sayhel</td>
-                                                    <td>Jan 02, 2020</td>
-                                                    <td>$1000</td>
-                                                    <td>Bitcoin</td>
+                                                <th scope="row">{{$deposit->duser->name}}</th>
+                                                <td>{{$deposit->created_at}}</td>
+                                                <td>{{$settings->currency}}{{$deposit->amount}}</td>
+                                                <td>{{$deposit->payment_mode}}</td>
+                                                <td>{{$deposit->status}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td><img src="{{asset ('temp/asset/img/icon/m1.png')}}" alt="">Jonshon</td>
-                                                    <td>Dec 12, 2019</td>
-                                                    <td>$5000</td>
-                                                    <td>USD</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="{{asset ('temp/asset/img/icon/m2.png')}}" alt="">Hopper</td>
-                                                    <td>Dec 22, 2019</td>
-                                                    <td>$4000</td>
-                                                    <td>Ripple</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="{{asset ('temp/asset/img/icon/m3.png')}}" alt="">Admond sayhel</td>
-                                                    <td>Jan 02, 2020</td>
-                                                    <td>$3000</td>
-                                                    <td>Bitcoin</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="{{asset ('temp/asset/img/icon/m4.png')}}" alt="">Anjel july</td>
-                                                    <td>Jan 05, 2020</td>
-                                                    <td>$500</td>
-                                                    <td>USD</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="{{asset ('temp/asset/img/icon/m5.png')}}" alt="">Lagisha</td>
-                                                    <td>Jan 12, 2020</td>
-                                                    <td>$5000</td>
-                                                    <td>Bitcoin</td>
-                                                </tr>
+                                            @endforeach
+                                            </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -551,51 +444,41 @@
                 <!-- Start counter Area -->
             </div>
 
-            <div class="container">
+            <div class="container" id="contact">
                 <div class="row">
 
-                <!-- <div class="row"> -->
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="section-headline text-center">
-                            <h2>Profit Calculater</h2>
-                            <p>Help agencies to define their new business objectives and then create professional software.</p>
+                            <h2>{{$content->getContent('9sNF7G','title')}}</h2>
+                            <p>{{$content->getContent('9sNF7G','description')}}</p>
 						</div>
 					</div>
-				<!-- </div> -->
-
-                <!-- <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="about-profit-inner">
-                        <div class="about-calculater">
-                            <h3>CONTACT US</h3>
-                            <p>The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy. The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy</p>
-                            <p>The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy. The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy</p>
-                        </div>
-                    </div>
-                </div> -->
                     
                     <!-- End contact icon -->
                     <div class="col-xl-12 col-lg-12 col-md-12">
                         <div class="contact-form">
-                           <form id="contactForm" method="POST" action="http://rockstheme.com/rocks/live-goldhyip/contact.php" class="contact-form">
+                           <form id="contactForm" method="POST" action="{{action('App\Http\Controllers\UsersController@sendcontact')}}" class="contact-form">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="name" class="form-control" placeholder="Name" required="" data-error="Please enter your name">
-                                        <div class="help-block with-errors"></div>
+                                        <input type="text" name="name" class="form-control" id="form3" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
+                                        <div class="validation"></div>
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="email" class="email form-control" id="email" placeholder="Email" required="" data-error="Please enter your email">
-                                        <div class="help-block with-errors"></div>
+                                    <input type="email" class="form-control" name="email" id="form2" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" required/>
+                                        <div class="validation"></div>
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <input type="text" id="msg_subject" class="form-control" placeholder="Subject" required="" data-error="Please enter your message subject">
-                                        <div class="help-block with-errors"></div>
+                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"required />
+                                        <div class="validation"></div>
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <textarea id="message" rows="7" placeholder="Massage" class="form-control" required="" data-error="Write your message"></textarea>
-                                        <div class="help-block with-errors"></div>
+                                    <textarea class="form-control" id="message" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message" required></textarea>
+                                    <!-- <textarea id="message" rows="7" placeholder="Massage" class="form-control" required="" data-error="Write your message"></textarea> -->
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">    
+                                    <div class="validation"></div>
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                                        <button type="submit" id="submit" class="contact-btn">Submit</button>
+                                        <button type="submit" class="contact-btn">Submit</button>
                                         <div id="msgSubmit" class="h3 text-center hidden"></div> 
                                         <div class="clearfix"></div>
                                     </div>   
@@ -611,24 +494,24 @@
                     <div class="col-xl-4 col-lg-4 col-md-4">
                         <div class="contact-single">
                         <span class="counter-icon"><i class="flaticon-034-reward"></i></span>
-                            <h3>ADDRESS</h3>
-                            <h6>No 10 Mission Road, Nigeria</h6>                            
+                            <h4>{{$content->getContent('52GPRA','title')}}</h4>
+                            <h6>{{$content->getContent('52GPRA','description')}}</h6>                            
                         </div>
                     </div>
 
                     <div class="col-xl-4 col-lg-4 col-md-4">
                         <div class="contact-single">
                         <span class="counter-icon"><i class="flaticon-034-reward"></i></span>
-                            <h3>ADDRESS</h3>
-                            <h6>No 10 Mission Road, Nigeria</h6>                            
+                            <h4>{{$content->getContent('0EXbji','title')}}</h4>
+                            <h6>{{$content->getContent('0EXbji','description')}}</h6>                            
                         </div>
                     </div>
 
                     <div class="col-xl-4 col-lg-4 col-md-4">
                         <div class="contact-single">
                         <span class="counter-icon"><i class="flaticon-034-reward"></i></span>
-                            <h3>ADDRESS</h3>
-                            <h6>No 10 Mission Road, Nigeria</h6>                            
+                            <h4>EMAIL</h4>
+                            <h6>{{$settings->contact_email}}</h6>                            
                         </div>
                     </div>                    
                 </div>
@@ -636,91 +519,40 @@
             </div>
         </div>
 
-
+        <!--==========================
+            FAQ Section Starts
+        ============================-->
         <div class="faq-area bg-color-2 area-padding">
             <div class="container">
                 <div class="row">
                    <div class="col-xl-12 col-lg-12 col-md-12">
                         <div class="section-headline text-center">
-                            <h2>Important Faq</h2>
-                            <p>Dummy text is also used to demonstrate the appearance of different typefaces and layouts</p>
+                            <h2>{{$content->getContent('OLZt1I','title')}}</h2>
+                            <p>{{$content->getContent('OLZt1I','description')}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <!-- Start Column Start -->
-                    <div class="col-xl-6 col-lg-6 col-md-6">
+
+
+                @foreach ($faqs as $item)
+                    <div class="col-xl-12 col-lg-12 col-md-12">
                         <div class="company-faq-left">
                             <div class="faq_inner">
                                 <div id="accordion">
                                     <div class="card">
-                                      <div class="card-header white-bg" id="headingOne">
+                                      <div class="card-header white-bg" id="heading{{$item->id}}">
                                         <h4 class="faq-top-text">
-                                          <button class="faq-accordion-btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            1. We are the best invest platform in the world? 
+                                          <button class="faq-accordion-btn" data-toggle="collapse" data-target="#faq{{$item->id}}" aria-expanded="true" aria-controls="faq{{$item->id}}">
+                                          {{$item->id}}. {{$item->question}}? 
                                           </button>
                                         </h4>
                                       </div>
 
-                                      <div id="collapseOne" class="collapse show " aria-labelledby="headingOne" data-parent="#accordion">
+                                      <div id="faq{{$item->id}}" class="collapse show " aria-labelledby="heading{{$item->id}}" data-parent="#accordion">
                                         <div class="card-body">
-                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="card">
-                                      <div class="card-header white-bg" id="headingTwo">
-                                        <h4 class="faq-top-text">
-                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            2. World class creative experts team member?
-                                          </button>
-                                        </h4>
-                                      </div>
-                                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                        <div class="card-body">
-                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="card">
-                                      <div class="card-header white-bg" id="headingThree">
-                                        <h4 class="faq-top-text">
-                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            3. Clients satisfaction make company value?
-                                          </button>
-                                        </h4>
-                                      </div>
-                                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                        <div class="card-body">
-                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="card">
-                                      <div class="card-header white-bg" id="headingFour">
-                                        <h4 class="faq-top-text">
-                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                            4. How to successful our business plan?
-                                          </button>
-                                        </h4>
-                                      </div>
-                                      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-                                        <div class="card-body">
-                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="card">
-                                      <div class="card-header white-bg" id="headingFive">
-                                        <h4 class="faq-top-text">
-                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                           5. How to possible to invest to profit?
-                                          </button>
-                                        </h4>
-                                      </div>
-                                      <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-                                        <div class="card-body">
-                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
+                                            {{$item->answer}}
                                         </div>
                                       </div>
                                     </div>
@@ -729,204 +561,67 @@
                             <!-- End FAQ -->
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="company-faq">
-                            <div class="faq_inner">
-                                <div id="accordion_2">
-                                    <div class="card">
-                                      <div class="card-header white-bg" id="headingSix">
-                                        <h4 class="faq-top-text">
-                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                            6. We are the best clean platform in the world? 
-                                          </button>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion_2">
-                                        <div class="card-body">
-                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="card">
-                                      <div class="card-header white-bg" id="headingSeven">
-                                        <h4 class="faq-top-text">
-                                          <button class="faq-accordion-btn" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
-                                            7. World class creative experts team member?
-                                          </button>
-                                        </h4>
-                                      </div>
-                                      <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven" data-parent="#accordion_2" style="">
-                                        <div class="card-body">
-                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="card">
-                                      <div class="card-header white-bg" id="headingEight">
-                                        <h4 class="faq-top-text">
-                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                            8. Clients satisfaction make company value?
-                                          </button>
-                                        </h4>
-                                      </div>
-                                      <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion_2">
-                                        <div class="card-body">
-                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="card">
-                                      <div class="card-header white-bg" id="headingNine">
-                                        <h4 class="faq-top-text">
-                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                                            9. How to successful our business plan?
-                                          </button>
-                                        </h4>
-                                      </div>
-                                      <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion_2">
-                                        <div class="card-body">
-                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="card">
-                                      <div class="card-header white-bg" id="headingTen">
-                                        <h4 class="faq-top-text">
-                                          <button class="faq-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-                                            10. How to change you life investment?
-                                          </button>
-                                        </h4>
-                                      </div>
-                                      <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion_2">
-                                        <div class="card-body">
-                                            When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection of text within a single line, the amount of words is roughly being .
-                                        </div>
-                                      </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End FAQ -->
-                        </div>
-                    </div>
+                @endforeach
+                
                 </div>
             </div>
         </div>
+        <!--==========================
+            FAQ Section Ends
+        ============================-->
 
-        <!-- End payment-history area -->
-        <!-- Start Reviews Area -->
-        <div class="reviews-area bg-color area-padding">
+        <!--==========================
+        Testimonials Sections Starts
+        ============================-->
+        <div class="reviews-area bg-color area-padding" id="testimonials">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-5 col-lg-5 col-md-6">
+                    <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="testimonial-inner">
                             <div class="review-head">
-                                <h2>Customer says about our company projects</h2>
-                                <p>The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy. The phrasal sequence of the Lorem Ipsum text is now so widespread and commonplace that many DTP programmes can generate dummy</p>
-                                <a class="reviews-btn anti-btn" href="review.html">More reviews</a>
+                                <h2>{{$content->getContent('SMsJr1','title')}}</h2>
+                                <p>{{$content->getContent('SMsJr1','description')}}</p>
+                                <!-- <a class="reviews-btn anti-btn" href="review.html">More reviews</a> -->
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-7 col-lg-7 col-md-6">
+                    <div class="col-xl-8 col-lg-8 col-md-6">
                         <div class="Reviews-content">
                             <!-- start testimonial carousel -->
                             <div class="testimonial-carousel owl-carousel">
+
+                                <!-- starts single testimonial -->
+                                @foreach ($test as $testimony)
                                 <div class="single-testi">
                                     <div class="testi-text">
                                         <div class="clients-text">
                                             <div class="testi-img ">
-                                                <img src="{{asset ('temp/asset/img/review/1.jpg')}}" alt="">
+                                                <img src="{{ asset('storage/app/public/photos/'.$testimony->picture)}}" alt="">
                                                 <div class="guest-details">
-                                                    <h4>Edward</h4>
-                                                    <span class="guest-rev">Genarel customer</span>
+                                                    <h4>{{$testimony->name}}</h4>
+                                                    <span class="guest-rev">{{$testimony->position}}</span>
                                                 </div>
                                             </div>
-                                            <div class="client-rating">
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                            </div>
-                                            <p>When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection. help agencies.</p>
+                                            <p>{{$testimony->what_is_said}}.</p>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End single item -->
-                                <div class="single-testi">
-                                    <div class="testi-text">
-                                        <div class="clients-text">
-                                            <div class="testi-img ">
-                                                <img src="{{asset ('temp/asset/img/review/2.jpg')}}" alt="">
-                                                <div class="guest-details">
-                                                    <h4>Charlotte</h4>
-                                                    <span class="guest-rev">Genarel customer</span>
-                                                </div>
-                                            </div>
-                                            <div class="client-rating">
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                            </div>
-                                            <p>When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection. help agencies.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End single item -->
-                                <div class="single-testi">
-                                    <div class="testi-text">
-                                        <div class="clients-text">
-                                            <div class="testi-img ">
-                                                <img src="{{asset ('temp/asset/img/review/3.jpg')}}" alt="">
-                                                <div class="guest-details">
-                                                    <h4>Daniel</h4>
-                                                    <span class="guest-rev">Genarel customer</span>
-                                                </div>
-                                            </div>
-                                            <div class="client-rating">
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                            </div>
-                                            <p>When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection. help agencies.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End single item -->
-                                <div class="single-testi">
-                                    <div class="testi-text">
-                                        <div class="clients-text">
-                                            <div class="testi-img ">
-                                                <img src="{{asset ('temp/asset/img/review/4.jpg')}}" alt="">
-                                                <div class="guest-details">
-                                                    <h4>Graham</h4>
-                                                    <span class="guest-rev">Genarel customer</span>
-                                                </div>
-                                            </div>
-                                            <div class="client-rating">
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                                <a href="#"><i class="ti-star"></i></a>
-                                            </div>
-                                            <p>When replacing a multi-lined selection of text, the generated dummy text maintains the amount of lines. When replacing a selection. help agencies.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End single item -->
+                                @endforeach
+                                <!-- End single testimonial -->
+                             
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Reviews area -->
+        <!--==========================
+        Testimonials Sections Ends
+        ============================-->
 
-        <!-- Start Subscribe area -->
+        <!--==========================
+            Payments Sections Starts 
+        ============================-->
         <div class="subscribe-area bg-color">
             <div class="container">
                 <div class="row">
@@ -934,40 +629,33 @@
 						<div class="subscribe-inner">
 						    <div class="subdcribe-content">
                                 <div class="section-headline text-center">
-                                    <h2>Payment methods</h2>
-                                    <p>Help agencies to define their new business objectives and then create professional software.</p>
-                                </div>
-                                <div class="subs-form">
-                                    <form id="contactForm" method="POST" action="http://rockstheme.com/rocks/live-goldhyip/contact.php" class="contact-form">
-                                        <input type="email" class="email form-control" id="email" placeholder="Email" required data-error="Please enter your email">
-                                        <button type="submit" id="submit" class="add-btn">Subscribe</button>
-                                    </form>  
-                                </div>
+                                    <h2>{{$content->getContent('U7zpEj','title')}}</h2>
+                                 </div>
                                 <div class="brand-content">
                                     <div class="brand-carousel owl-carousel">
                                         <div class="single-brand-item">
-                                            <a href="#"><img src="{{asset ('temp/asset/img/brand/1.png')}}" alt=""></a>
+                                            <a href="#"><img src="{{ asset('temp/img/payments/payment-1.png')}}" alt=""></a>
                                         </div>
                                         <div class="single-brand-item">
-                                            <a href="#"><img src="{{asset ('temp/asset/img/brand/2.png')}}" alt=""></a>
+                                            <a href="#"><img src="{{ asset('temp/img/payments/payment-2.png')}}" alt=""></a>
                                         </div>
                                         <div class="single-brand-item">
-                                            <a href="#"><img src="{{asset ('temp/asset/img/brand/3.png')}}" alt=""></a>
+                                            <a href="#"><img src="{{ asset('temp/img/payments/payment-3.png')}}" alt=""></a>
                                         </div>
                                         <div class="single-brand-item">
-                                            <a href="#"><img src="{{asset ('temp/asset/img/brand/4.png')}}" alt=""></a>
+                                            <a href="#"><img src="{{ asset('temp/img/payments/payment-4.png')}}" alt=""></a>
                                         </div>
                                         <div class="single-brand-item">
-                                            <a href="#"><img src="{{asset ('temp/asset/img/brand/5.png')}}" alt=""></a>
+                                            <a href="#"><img src="{{ asset('temp/img/payments/payment-5.png')}}" alt=""></a>
                                         </div>
                                         <div class="single-brand-item">
-                                            <a href="#"><img src="{{asset ('temp/asset/img/brand/6.png')}}" alt=""></a>
+                                            <a href="#"><img src="{{ asset('temp/img/payments/payment-6.png')}}" alt=""></a>
                                         </div>
                                         <div class="single-brand-item">
-                                            <a href="#"><img src="{{asset ('temp/asset/img/brand/7.png')}}" alt=""></a>
+                                            <a href="#"><img src="{{ asset('temp/img/payments/payment-7.png')}}" alt=""></a>
                                         </div>
                                         <div class="single-brand-item">
-                                            <a href="#"><img src="{{asset ('temp/asset/img/brand/8.png')}}" alt=""></a>
+                                            <a href="#"><img src="{{ asset('temp/img/payments/payment-8.png')}}" alt=""></a>
                                         </div>
                                     </div>
                                 </div>
@@ -977,100 +665,45 @@
                 </div>
             </div>
         </div>
-        <!-- End Subscribe area -->
+        <!--==========================
+            Payments Sections Ends
+        ============================-->
+
     </main>
-    <!-- Start Footer Area -->
+  
+        <!--==========================
+            Footer Sections Starts
+        ============================-->
     <footer class="footer1">
         <div class="footer-area">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-8">
+                    <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="footer-content logo-footer">
                             <div class="footer-head">
-                                <h4>About Goldhyip</h4>
+                                <h4>About {{$settings->site_name}}</h4>
                                 <p>
-                                    When replacing a selection. help agencies to define their new business objectives and then create. maintains the amount of lines. When replacing a selection. help agencies to define their.  maintains the amount of lines. When replacing a selection.
+                                {{$content->getContent('ETsdbc','description')}}
                                 </p>
-                                <div class="footer-icons">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-google"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-pinterest"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-2 col-md-4">
+                    <div class="col-xl-4 col-lg-4 col-md-6 d-flex align-items-center">
                         <div class="footer-content">
                             <div class="footer-head">
-                                <h4>Invest plan</h4>
+                                <h4>Useful Links</h4>
                                 <ul class="footer-list">
-                                    <li><a href="#">Silver plan</a></li>
-                                    <li><a href="#">Gold plan</a></li>
-                                    <li><a href="#">Platinum Plan</a></li>
-                                    <li><a href="#">Diamond plan</a></li>
-                                    <li><a href="#">Premium plan</a></li>
-                                    <li><a href="#">Custom plan</a></li>
+                                <li><a href="#intro"> Home</a></li>
+                                <li><a href="#services">Services</a></li>
+                                <li><a href="#">Terms of service</a></li>
+                                <li><a href="#">Privacy policy</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- end single footer -->
-                    <div class="col-xl-2 col-lg-2 col-md-4">
-                        <div class="footer-content rs-mar-0">
-                            <div class="footer-head">
-                                <h4>Payments option</h4>
-                                <ul class="footer-list">
-                                    <li><a href="#">Ripple coin</a></li>
-                                    <li><a href="#">Bitcoin</a></li>
-                                    <li><a href="#">Ethireum</a></li>
-                                    <li><a href="#">Light coin</a></li>
-                                    <li><a href="#">Coin base</a></li>
-                                    <li><a href="#">Skrill card</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2 col-md-4">
-                        <div class="footer-content rs-mar-0">
-                            <div class="footer-head">
-                                <h4>Accounts</h4>
-                                <ul class="footer-list">
-                                    <li><a href="#">Signup</a></li>
-                                    <li><a href="#">Login</a></li>
-                                    <li><a href="#">Privacy</a></li>
-                                    <li><a href="#">Notification</a></li>
-                                    <li><a href="#">Condition</a></li>
-                                    <li><a href="#">Black night</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end single footer -->
-                    <div class="col-xl-2 col-lg-2 col-md-4">
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="footer-content last-content rs-mar-0">
                             <div class="footer-head">
                                 <h4>Support</h4>
@@ -1084,37 +717,75 @@
                                 </ul>
                             </div>
                         </div>
+                    </div> -->
+                    <div class="col-lg-4 col-md-6 footer-contact">           
+                    <h4>Contact Us</h4>
+                    <p>
+                    {{$content->getContent('52GPRA','description')}} <br>
+                    <a href="#" class="text-white"><strong>Phone:</strong> {{$content->getContent('0EXbji','description')}}<br></a>
+                    <a href="#" class="text-white"><strong>Email:</strong> {{$settings->contact_email}}<br></a>
+                    </p>
+
+                    <div class="footer-icons">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-google"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-pinterest"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
+
+                </div>
+
                 </div>
             </div>
         </div>
         <!-- Start Footer Bottom Area -->
+
+
         <div class="footer-area-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="copyright">
+
+        <div class="container">
+      <!-- <div class="copyright">
+        &copy; Copyright  {{date('Y')}} &nbsp;<strong> {{$settings->site_name}} &nbsp;</strong> All Rights Reserved.
+      </div> -->
+                    <div class="copyright">
                             <p>
-                                Copyright © 2021
-                                <a href="#">GOLDHYIP</a> All Rights Reserved
+                                Copyright © {{date('Y')}} &nbsp;
+                                <a href="#"> 
+                                    <strong> {{$settings->site_name}} &nbsp;</strong> 
+                                </a> All Rights Reserved
                             </p>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="footer-menu">
-                            <ul>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Terms & Condition</a></li>
-                                <li><a href="#">Privacy</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <!-- End Footer Bottom Area -->
     </footer>
-    <!-- End Footer Area -->
+    <!--==========================
+        Footer Sections Ends
+    ============================-->
 
     <!-- All JS here -->
 
