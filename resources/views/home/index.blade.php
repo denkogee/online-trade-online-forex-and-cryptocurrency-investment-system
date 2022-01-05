@@ -69,13 +69,13 @@
                             </ul>  
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
+                    <!-- <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="topbar-right">
                             <ul>
                                 <li><a href="#intro"><img src="{{asset ('temp/asset/img/icon/login.png')}}" alt="">Login</a>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
